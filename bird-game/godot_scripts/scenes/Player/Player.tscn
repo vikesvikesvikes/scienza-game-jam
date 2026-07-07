@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://crvw34ntx1gvk"]
+
+[ext_resource type="Script" uid="uid://dijpxumbybek5" path="res://godot_scripts/scenes/Player/player.gd" id="1_swcsf"]
+[ext_resource type="Texture2D" uid="uid://do7mx0f12a5vb" path="res://icon.svg" id="2_ppmj0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f012i"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=703065713 groups=["player"]]
+position = Vector2(-8, 0)
+script = ExtResource("1_swcsf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=999309341]
+shape = SubResource("CircleShape2D_f012i")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1781610141]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ppmj0")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1270557901]

@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://cdt1dlugligxj"]
+
+[ext_resource type="Shader" uid="uid://bruptak3est2v" path="res://godot_scripts/scenes/analyzer/Analyzer.gdshader" id="1_j4lg0"]
+[ext_resource type="Script" uid="uid://cv1b5srra87vj" path="res://godot_scripts/scenes/analyzer/bird_sonogram.gd" id="1_uilqx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxkks"]
+shader = ExtResource("1_j4lg0")
+shader_parameter/paper_color = Vector3(0.92, 0.89, 0.83)
+
+[node name="BirdSonogram" type="Node2D" unique_id=1131237019]
+script = ExtResource("1_uilqx")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1501596526]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=576212911]
+layout_mode = 2
+
+[node name="EixoY-kHz" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1005357672]
+layout_mode = 2
+theme_override_constants/separation = 90
+
+[node name="Label 11 kHz" type="Label" parent="PanelContainer/HBoxContainer/EixoY-kHz" unique_id=867866303]
+layout_mode = 2
+text = "11.0 kHz"
+
+[node name="Label 5,5 kHz" type="Label" parent="PanelContainer/HBoxContainer/EixoY-kHz" unique_id=1615622212]
+layout_mode = 2
+text = "5.5 kHz"
+
+[node name="Label 0 kHz" type="Label" parent="PanelContainer/HBoxContainer/EixoY-kHz" unique_id=809047785]
+layout_mode = 2
+size_flags_vertical = 1
+text = "0 kHz"
+vertical_alignment = 2
+
+[node name="EixoX-Tempo" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1536163689]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/HBoxContainer/EixoX-Tempo" unique_id=667106021]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/EixoX-Tempo/HBoxContainer2" unique_id=525903124]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/HBoxContainer/EixoX-Tempo" unique_id=1013094076]
+material = SubResource("ShaderMaterial_uxkks")
+custom_minimum_size = Vector2(600, 250)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/EixoX-Tempo" unique_id=1780908449]
+layout_mode = 2
+theme_override_constants/separation = 250
+
+[node name="Começo" type="Label" parent="PanelContainer/HBoxContainer/EixoX-Tempo/HBoxContainer" unique_id=967092537]
+layout_mode = 2
+text = "0:00"
+
+[node name="Meio" type="Label" parent="PanelContainer/HBoxContainer/EixoX-Tempo/HBoxContainer" unique_id=1210870506]
+layout_mode = 2
+text = "--"
+
+[node name="Fim" type="Label" parent="PanelContainer/HBoxContainer/EixoX-Tempo/HBoxContainer" unique_id=1482453013]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=13785891]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=374117225]
+layout_mode = 2
+text = "  "

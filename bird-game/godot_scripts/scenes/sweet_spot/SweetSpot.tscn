@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cdwsx008kqw36"]
+
+[ext_resource type="Script" uid="uid://04kmisac1qsl" path="res://godot_scripts/scenes/sweet_spot/sweet_spot.gd" id="1_713on"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f012i"]
+radius = 86.09297
+
+[node name="SweetSpot" type="Area2D" unique_id=320517776]
+script = ExtResource("1_713on")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1800941607]
+shape = SubResource("CircleShape2D_f012i")

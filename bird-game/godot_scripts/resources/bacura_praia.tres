@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SignalData" format=3 uid="uid://bvpiryhfdnlia"]
+
+[ext_resource type="Script" uid="uid://da3h744gsv7h4" path="res://godot_scripts/resources/signal_data.gd" id="1_7ib6l"]
+[ext_resource type="AudioStream" uid="uid://ge85qbr5gaga" path="res://Audio/bacura-da-paia.mp3" id="1_jdds7"]
+[ext_resource type="Script" uid="uid://c3nnlsb7s4usg" path="res://godot_scripts/resources/syllable_data.gd" id="2_jdds7"]
+
+[sub_resource type="Resource" id="Resource_pa7c5"]
+script = ExtResource("2_jdds7")
+frequency_sequence = Array[int]([0, 0, 0])
+metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
+
+[sub_resource type="Resource" id="Resource_s8mdj"]
+script = ExtResource("2_jdds7")
+frequency_sequence = Array[int]([0, 0, 0, 0, 0])
+metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
+
+[sub_resource type="Resource" id="Resource_00kfw"]
+script = ExtResource("2_jdds7")
+frequency_sequence = Array[int]([0, 0, 0, 0, 0, 0])
+metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
+
+[resource]
+script = ExtResource("1_7ib6l")
+signal_id = "bacura"
+display_name = "Bacura Praia"
+bird_audio = ExtResource("1_jdds7")
+syllables = Array[ExtResource("2_jdds7")]([SubResource("Resource_pa7c5"), SubResource("Resource_s8mdj"), SubResource("Resource_00kfw")])
+metadata/_custom_type_script = "uid://da3h744gsv7h4"

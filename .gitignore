@@ -1,0 +1,33 @@
+# Godot 4+ specific ignores
+.godot/
+.nomedia
+
+# Godot 3.x specific ignores (keep if migrating or using older versions)
+.import/
+
+# Export configuration and credentials
+export.cfg
+export_credentials.cfg
+export_presets.cfg
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono/C# specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+*.suo
+*.ntvsca.json
+*.njsproj
+*.sln
+*.csproj
+*.user
+
+# Crash dumps and temp files
+*.tmp
+
+# System/OS-specific ignores
+.DS_Store
+Thumbs.db
+

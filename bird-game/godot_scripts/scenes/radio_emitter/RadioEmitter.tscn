@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c5oj5dmak2fl"]
+
+[ext_resource type="Script" uid="uid://kfxsoy6coo8u" path="res://godot_scripts/scenes/radio_emitter/radio_emitter.gd" id="1_ch5td"]
+[ext_resource type="Resource" uid="uid://ij2fiigny0qn" path="res://godot_scripts/resources/bem-te-vi1.tres" id="2_mmkqu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f012i"]
+radius = 237.60892
+
+[node name="RadioEmitter" type="Node2D" unique_id=1761621902]
+script = ExtResource("1_ch5td")
+signal_data = ExtResource("2_mmkqu")
+bird_call_interval = 15.0
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=2047635713]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=357772533]
+shape = SubResource("CircleShape2D_f012i")
+
+[node name="StaticPlayer" type="AudioStreamPlayer2D" parent="." unique_id=2110909647]
+
+[node name="NoisePlayer" type="AudioStreamPlayer2D" parent="." unique_id=1602644601]
+
+[node name="BirdPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1390814961]
+bus = &"Radio"
