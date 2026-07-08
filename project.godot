@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="bird-game"
+run/main_scene="uid://bawfibasguwbk"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

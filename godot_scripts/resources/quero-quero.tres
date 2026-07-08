@@ -9,15 +9,10 @@ script = ExtResource("2_sca6n")
 frequency_sequence = Array[int]([1, 3, 3])
 metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
 
-[sub_resource type="Resource" id="Resource_bwvuo"]
-script = ExtResource("2_sca6n")
-frequency_sequence = Array[int]([4, 0, 0, 4])
-metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
-
 [resource]
 script = ExtResource("1_1trt0")
 signal_id = "quero-quero"
 display_name = "Quero Quero"
 bird_audio = ExtResource("1_sca6n")
-syllables = Array[ExtResource("2_sca6n")]([SubResource("Resource_4i7g3"), SubResource("Resource_bwvuo")])
+syllables = Array[ExtResource("2_sca6n")]([SubResource("Resource_4i7g3")])
 metadata/_custom_type_script = "uid://da3h744gsv7h4"

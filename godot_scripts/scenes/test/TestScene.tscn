@@ -14,26 +14,26 @@
 script = ExtResource("1_hkoiq")
 
 [node name="RadioEmitter_1" parent="." unique_id=1761621902 instance=ExtResource("1_wwhux")]
-position = Vector2(211, -71)
+position = Vector2(-1951, -2146)
 
 [node name="RadioEmitter_2" parent="." unique_id=1278498252 instance=ExtResource("1_wwhux")]
-position = Vector2(-283, -264)
+position = Vector2(-1349, -676)
 signal_data = ExtResource("3_6x1rk")
 
 [node name="RadioEmitter_3" parent="." unique_id=1027619924 instance=ExtResource("1_wwhux")]
-position = Vector2(-847, -214)
+position = Vector2(-3560, -1011)
 signal_data = ExtResource("4_q7kgm")
 
 [node name="SweetSpot_1" parent="." unique_id=320517776 instance=ExtResource("2_hb0hl")]
-position = Vector2(278, -194)
+position = Vector2(-1993, -2136)
 linked_emitter = NodePath("../RadioEmitter_1")
 
 [node name="SweetSpot_3" parent="." unique_id=465174817 instance=ExtResource("2_hb0hl")]
-position = Vector2(-938, -133)
+position = Vector2(-3571, -894)
 linked_emitter = NodePath("../RadioEmitter_3")
 
 [node name="SweetSpot_2" parent="." unique_id=510134844 instance=ExtResource("2_hb0hl")]
-position = Vector2(-299, -183)
+position = Vector2(-1365, -667)
 linked_emitter = NodePath("../RadioEmitter_2")
 
 [node name="CharacterBody2D" parent="." unique_id=703065713 instance=ExtResource("4_f6rnu")]
@@ -42,15 +42,14 @@ position = Vector2(-641, 23)
 [node name="HUD" type="CanvasLayer" parent="." unique_id=449121970]
 
 [node name="RepertoireMinigame" parent="HUD" unique_id=656648358 instance=ExtResource("5_2diwr")]
-visible = false
 
 [node name="BirdSonogram" parent="HUD" unique_id=1131237019 instance=ExtResource("7_f6rnu")]
 position = Vector2(470, 344)
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=261245102]
 z_index = -100
-offset_left = -1402.0
-offset_top = -633.0
-offset_right = 1146.0
-offset_bottom = 1070.0
+offset_left = -5955.0
+offset_top = -5265.0
+offset_right = 8005.0
+offset_bottom = 8763.0
 texture = ExtResource("8_2dhtr")

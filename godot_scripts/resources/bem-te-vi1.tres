@@ -11,16 +11,11 @@ label = "Bem-Te-Vi"
 frequency_sequence = Array[int]([0, 2, 3])
 metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
 
-[sub_resource type="Resource" id="Resource_ktpa2"]
-script = ExtResource("2_25paf")
-frequency_sequence = Array[int]([0, 0, 0])
-metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
-
 [resource]
 script = ExtResource("1_01m0u")
 signal_id = "bem_te_vi_1"
 display_name = "bem-te-vi"
 bird_icon = ExtResource("2_ktpa2")
 bird_audio = ExtResource("1_4doss")
-syllables = Array[ExtResource("2_25paf")]([SubResource("Resource_4doss"), SubResource("Resource_ktpa2")])
+syllables = Array[ExtResource("2_25paf")]([SubResource("Resource_4doss")])
 metadata/_custom_type_script = "uid://da3h744gsv7h4"

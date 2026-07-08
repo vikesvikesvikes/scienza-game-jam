@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://lhyaweo6wuv4"]
+
+[ext_resource type="Script" uid="uid://cg1vspgwtv10t" path="res://godot_scripts/scenes/SignalTool/signal_generator_tool.gd" id="1_qjp1a"]
+[ext_resource type="AudioStream" uid="uid://mxfuklal07km" path="res://Audio/tico-tico.mp3" id="2_y332n"]
+
+[node name="SignalTool" type="Node2D" unique_id=1977547415]
+script = ExtResource("1_qjp1a")
+audio_file = ExtResource("2_y332n")
