@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SignalData" format=3 uid="uid://cblva5h6e2msk"]
+
+[ext_resource type="AudioStream" uid="uid://c73np73y2yxt0" path="res://Audio/bem-te-vi.mp3" id="1_o883o"]
+[ext_resource type="Script" uid="uid://da3h744gsv7h4" path="res://godot_scripts/resources/signal_data.gd" id="1_tlutm"]
+[ext_resource type="Script" uid="uid://c3nnlsb7s4usg" path="res://godot_scripts/resources/syllable_data.gd" id="2_o883o"]
+
+[resource]
+script = ExtResource("1_tlutm")
+signal_id = "bem-te-vi"
+display_name = "Bem Te Vi"
+bird_audio = ExtResource("1_o883o")
+metadata/_custom_type_script = "uid://da3h744gsv7h4"

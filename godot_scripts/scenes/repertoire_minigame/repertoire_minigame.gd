@@ -11,25 +11,20 @@ extends Control
 ##   3. Escute o sinal "minigame_completed" para saber se aprendeu
 ## ══════════════════════════════════════════════════════════════════════════════
 
-## Mapeamento das 5 teclas → índice de Pitch (0 = Muito Grave … 4 = Muito Agudo)
-const FREQ_KEYS: Array[Key] = [KEY_Q, KEY_W, KEY_E, KEY_R, KEY_T]
+const FREQ_KEYS: Array[Key] = [KEY_Q, KEY_W, KEY_E,]
 
 ## Rótulos exibidos nos botões (tecla + altura)
 const FREQ_LABELS: Array[String] = [
-	"Q\nMuito Grave",
-	"W\nGrave",
-	"E\nNeutro",
-	"R\nAgudo",
-	"T\nMuito Agudo",
+	"Q\nGrave",
+	"W\nNeutro",
+	"E\nAgudo",
 ]
 
 ## Cores dos 5 canais de frequência (Q=grave .. T=agudo)
 const FREQ_COLORS: Array[Color] = [
-	Color(0.4, 0.6, 1.0),   # Q — azul       (Muito Grave)
-	Color(0.4, 0.9, 0.8),   # W — ciano       (Grave)
-	Color(0.5, 1.0, 0.5),   # E — verde       (Neutro)
-	Color(1.0, 0.75, 0.2),  # R — amarelo     (Agudo)
-	Color(1.0, 0.35, 0.35), # T — vermelho    (Muito Agudo)
+	Color(0.4, 0.9, 0.8),   # Q — ciano       (Grave)
+	Color(0.5, 1.0, 0.5),   # W — verde       (Neutro)
+	Color(1.0, 0.75, 0.2),  # E — amarelo     (Agudo)
 ]
 
 ## Emitido ao concluir com sucesso

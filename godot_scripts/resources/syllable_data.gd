@@ -7,11 +7,9 @@ extends Resource
 ## As 5 alturas disponíveis para compor o canto.
 ## No editor, cada nota do frequency_sequence aparece como dropdown com esses nomes.
 enum Pitch {
-		MUITO_GRAVE  = 0,  ## tecla Q — frequência mais grave
-		GRAVE        = 1,  ## tecla W
-		NEUTRO       = 2,  ## tecla E — frequência média
-		AGUDO        = 3,  ## tecla R
-		MUITO_AGUDO  = 4,  ## tecla T — frequência mais aguda
+		GRAVE        = 0,  ## tecla W
+		NEUTRO       = 1,  ## tecla E — frequência média
+		AGUDO        = 2,  ## tecla R
 }
 
 ## Rótulo visual exibido no mini-game (ex: "A", "B", "X")

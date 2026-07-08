@@ -26,8 +26,8 @@ const C_CURSOR_BG    := Color(1.00, 0.85, 0.10, 0.07)
 const C_SCAN_LINE    := Color(0.40, 0.80, 1.00, 0.30)
 
 # ── Layout ────────────────────────────────────────────────────────────────────
-const FREQ_COUNT    := 5
-const FREQ_LABELS   := ["Q\nM.Grave", "W\nGrave", "E\nNeutro", "R\nAgudo", "T\nM.Agudo"]
+const FREQ_COUNT    := 3
+const FREQ_LABELS   := ["Q\nGrave", "W\nNeutro", "E\nAgudo"]
 const LABEL_COL_W   := 56.0    # largura da coluna de labels à esquerda
 const NOTE_W        := 28.0    # largura de uma nota
 const NOTE_GAP      := 5.0     # gap entre notas dentro da sílaba
@@ -149,7 +149,7 @@ func _draw_grid(w: float, h: float, grid_h: float, slot_h: float) -> void:
 		var gy := BRACKET_H + float(FREQ_COUNT - 1 - i) * slot_h
 		draw_line(Vector2(LABEL_COL_W, gy), Vector2(w, gy), C_GRID, 1.0)
 		# Label de frequência (nome curto)
-		var short_name = ["M.Grave", "Grave", "Neutro", "Agudo", "M.Agudo"][i]
+		var short_name = ["Grave", "Neutro", "Agudo"][i]
 		draw_string(font, Vector2(4.0, gy + slot_h * 0.68),
 			short_name, HORIZONTAL_ALIGNMENT_LEFT, -1, 11, C_FREQ_LABEL)
 	var bottom_y := BRACKET_H + grid_h

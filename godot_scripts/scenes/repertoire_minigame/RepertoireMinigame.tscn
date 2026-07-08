@@ -74,6 +74,7 @@ metadata/_custom_type_script = "uid://co06sp6ol6hj0"
 
 [node name="SpectrumVisualizer" type="ColorRect" parent="Panel/VBox/SonogramDisplay" unique_id=1713202248]
 material = SubResource("ShaderMaterial_gjyqt")
+custom_minimum_size = Vector2(600, 200)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

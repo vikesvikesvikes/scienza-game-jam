@@ -4,13 +4,19 @@
 [ext_resource type="Script" uid="uid://da3h744gsv7h4" path="res://godot_scripts/resources/signal_data.gd" id="2_1t0g2"]
 [ext_resource type="Script" uid="uid://c3nnlsb7s4usg" path="res://godot_scripts/resources/syllable_data.gd" id="3_kb0tl"]
 
-[sub_resource type="Resource" id="Resource_8wcmy"]
+[sub_resource type="Resource" id="Resource_j3pel"]
 script = ExtResource("3_kb0tl")
-frequency_sequence = Array[int]([0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 2, 0, 0, 0, 0, 3, 0, 2, 2, 0, 0])
+frequency_sequence = Array[int]([2])
+metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
+
+[sub_resource type="Resource" id="Resource_g28q7"]
+script = ExtResource("3_kb0tl")
+frequency_sequence = Array[int]([0, 2, 0, 2, 0, 2, 2])
+metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
 
 [resource]
 script = ExtResource("2_1t0g2")
 signal_id = "tico-tico"
 display_name = "Tico Tico"
 bird_audio = ExtResource("1_8wcmy")
-syllables = Array[ExtResource("3_kb0tl")]([SubResource("Resource_8wcmy")])
+syllables = Array[ExtResource("3_kb0tl")]([SubResource("Resource_j3pel"), SubResource("Resource_g28q7")])
