@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cagcj0uhvkvgn"]
+
+[ext_resource type="Script" uid="uid://b6g4bhm17mj33" path="res://godot_scripts/scenes/Puzzles/puzzle_main.gd" id="1_6rnwl"]
+
+[node name="Main" type="Node2D" unique_id=1604054983]
+script = ExtResource("1_6rnwl")
+
+[node name="Cells" type="Node2D" parent="." unique_id=130747218]
+position = Vector2(328, 326)
+
+[node name="Pieces" type="Node2D" parent="." unique_id=1232958737]

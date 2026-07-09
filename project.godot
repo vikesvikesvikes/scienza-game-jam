@@ -23,9 +23,12 @@ buses/default_bus_layout="uid://bfoiar23hs13o"
 
 GameManager="*uid://coxiqjw2hwlnr"
 SignalBook="*uid://dv5bka60ysj54"
+PuzzleGlobal="*uid://m62x68m04ifh"
 
 [display]
 
+window/size/viewport_width=1024
+window/size/viewport_height=1024
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -40,3 +43,4 @@ player=""
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.19076231, 0.19076234, 0.19076231, 1)

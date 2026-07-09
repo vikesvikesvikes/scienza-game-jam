@@ -1,1 +1,0 @@
-# scienza-game-jam

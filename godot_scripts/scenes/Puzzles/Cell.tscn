@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://krr08vogxppl"]
+
+[ext_resource type="Script" uid="uid://qkfrwxpm8cua" path="res://godot_scripts/scenes/Puzzles/cell.gd" id="1_ddmgp"]
+
+[sub_resource type="Gradient" id="Gradient_u2j3m"]
+colors = PackedColorArray(0.2592937, 0.2592937, 0.2592937, 1, 0.20511743, 0.20511743, 0.20511743, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4i7p2"]
+gradient = SubResource("Gradient_u2j3m")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixpwb"]
+
+[node name="Cell" type="Area2D" unique_id=845196611 groups=["cell"]]
+script = ExtResource("1_ddmgp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1389624750]
+scale = Vector2(1, 256)
+texture = SubResource("GradientTexture1D_4i7p2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=474196844]
+shape = SubResource("RectangleShape2D_ixpwb")

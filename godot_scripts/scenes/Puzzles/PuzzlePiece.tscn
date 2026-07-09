@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cjuyp2jpafc4x"]
+
+[ext_resource type="Script" uid="uid://du6a31g31d288" path="res://godot_scripts/scenes/Puzzles/puzzle_piece.gd" id="1_dd0f2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f012i"]
+
+[node name="PuzzlePiece" type="Area2D" unique_id=412507634]
+script = ExtResource("1_dd0f2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=966424544]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1381305682]
+shape = SubResource("RectangleShape2D_f012i")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
