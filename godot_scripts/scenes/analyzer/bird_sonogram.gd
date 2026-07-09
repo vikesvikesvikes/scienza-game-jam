@@ -18,7 +18,7 @@ extends Node2D
 @export var bus_name: String = "Radio"
 
 ## Quantas bandas de frequência no eixo Y
-@export var vu_count: int = 30
+@export var vu_count: int = 128
 
 ## Quantas colunas de tempo no eixo X (resolução temporal)
 @export var historic_samples: int = 256
@@ -49,6 +49,7 @@ var _is_analyzing: bool = false
 ## Conecta ao AudioStreamPlayer2D passado e inicia a gravação do sonograma.
 ## Chame este método quando o pássaro começar a cantar (ex: on_player_entered_sweet_spot).
 func analyze(player: AudioStreamPlayer2D) -> void:
+	clear()
 	_audio_player = player
 
 	if not player.stream:
@@ -71,9 +72,8 @@ func clear() -> void:
 	stop()
 	_audio_player = null
 	_last_written_column = -1
-	if _sonogram_image:
-		_sonogram_image.fill(Color(0, 0, 0, 1))
-		_sonogram_texture.update(_sonogram_image)
+	# Força a recriação da imagem e a reinjeção do parâmetro no shader
+	_reset_image()
 
 # ── Inicialização ──────────────────────────────────────────────────────────────
 

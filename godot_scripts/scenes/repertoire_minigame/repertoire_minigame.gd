@@ -1,17 +1,7 @@
 class_name RepertoireMinigame
 extends Control
 
-## ══════════════════════════════════════════════════════════════════════════════
-## REPERTOIRE MINI-GAME
-## Fluxo: Entrada (sonograma) → Processamento (player digita sílabas) → Saída (sinal aprendido)
-##
-## Como usar:
-##   1. Coloque este Control num CanvasLayer (sempre por cima do jogo)
-##   2. Chame open(signal_data) quando o player entrar no sweet spot
-##   3. Escute o sinal "minigame_completed" para saber se aprendeu
-## ══════════════════════════════════════════════════════════════════════════════
-
-const FREQ_KEYS: Array[Key] = [KEY_Q, KEY_W, KEY_E,]
+const FREQ_KEYS: Array[Key] = [KEY_Q, KEY_W, KEY_E]
 
 ## Rótulos exibidos nos botões (tecla + altura)
 const FREQ_LABELS: Array[String] = [
@@ -20,7 +10,7 @@ const FREQ_LABELS: Array[String] = [
 	"E\nAgudo",
 ]
 
-## Cores dos 5 canais de frequência (Q=grave .. T=agudo)
+## Cores dos 3 canais de frequência
 const FREQ_COLORS: Array[Color] = [
 	Color(0.4, 0.9, 0.8),   # Q — ciano       (Grave)
 	Color(0.5, 1.0, 0.5),   # W — verde       (Neutro)
@@ -29,123 +19,162 @@ const FREQ_COLORS: Array[Color] = [
 
 ## Emitido ao concluir com sucesso
 signal minigame_completed(signal_data: SignalData)
-
-## Emitido ao fechar sem aprender (Esc)
+## Emitido ao fechar sem terminar
 signal minigame_cancelled
 
-# ── Referências de UI ────────────────────────────────────────────────────────
-@onready var sonogram_display: SonogramDisplay = $Panel/VBox/SonogramDisplay
-@onready var freq_buttons: HBoxContainer       = $Panel/VBox/FreqButtons
-@onready var feedback_label: Label             = $Panel/VBox/FeedbackLabel
-@onready var bird_name_label: Label            = $Panel/TitleBar/BirdNameLabel
-@onready var close_hint: Label                 = $Panel/TitleBar/CloseHint
-@onready var phrase_progress: Label            = $Panel/VBox/PhraseProgress
+@onready var bird_name_label: Label   = $Panel/TitleBar/BirdNameLabel
+@onready var syllable_slots: HBoxContainer = $Panel/VBox/SyllableSlots
+@onready var freq_buttons: HBoxContainer   = $Panel/VBox/FreqButtons
+@onready var feedback_label: Label         = $Panel/VBox/FeedbackLabel
+@onready var phrase_progress: Label        = $Panel/VBox/PhraseProgress
 
-# ── Estado interno ───────────────────────────────────────────────────────────
-var _current_signal: SignalData = null
+var _current_signal: SignalData
 var _current_syllable_index: int = 0
 var _current_note_index: int = 0
-var _input_buffer: Array[int] = []
-var _is_open: bool = false
+var _is_active: bool = false
 
-# ── API pública ──────────────────────────────────────────────────────────────
+func _ready() -> void:
+	visible = false
+	set_process_unhandled_key_input(false)
 
-func open(data: SignalData) -> void:
-	_current_signal = data
+## Abre a interface do mini-game para o pássaro atual
+func open(signal_data: SignalData) -> void:
+	if not signal_data:
+		return
+	_current_signal = signal_data
 	_current_syllable_index = 0
 	_current_note_index = 0
-	_input_buffer.clear()
-	_is_open = true
-	visible = true
-
-	bird_name_label.text = data.display_name
-	close_hint.text = "[Esc] Sair"
-
-	sonogram_display.setup(data)
-	_build_freq_buttons()
+	_is_active = true
+	
+	if bird_name_label:
+		bird_name_label.text = _current_signal.display_name
+		
+	_build_syllable_ui()
+	_build_frequency_buttons()
 	_update_phrase_progress()
-	_update_feedback("")
+	_update_feedback("Digite a sequência de notas usando Q, W, E")
+	
+	visible = true
+	set_process_unhandled_key_input(true)
 
+## Fecha o mini-game limpando referências
 func close() -> void:
-	_is_open = false
 	visible = false
+	_is_active = false
+	set_process_unhandled_key_input(false)
 	_current_signal = null
 
-# ── Input ────────────────────────────────────────────────────────────────────
-
 func _unhandled_key_input(event: InputEvent) -> void:
-	if not _is_open or not event.pressed:
+	if not _is_active or not event.is_pressed() or event.is_echo():
 		return
-
-	if event.keycode == KEY_ESCAPE:
-		close()
+		
+	# Tecla ESC cancela/fecha o estudo
+	if event.is_action_pressed("ui_cancel"):
 		minigame_cancelled.emit()
+		close()
 		return
-
-	var freq_index: int = FREQ_KEYS.find(event.keycode)
-	if freq_index == -1:
-		return
-
-	_on_frequency_pressed(freq_index)
-
-func _on_frequency_pressed(freq_index: int) -> void:
-	if not _current_signal or _current_syllable_index >= _current_signal.syllables.size():
-		return
-	
-	_animate_freq_button(freq_index)
-
-	var syl: SyllableData = _current_signal.syllables[_current_syllable_index]
-	var expected_note: int = syl.frequency_sequence[_current_note_index]
-	var correct: bool = freq_index == expected_note
-
-	# Atualiza o sonograma visualmente
-	sonogram_display.mark_note(_current_syllable_index, _current_note_index, correct)
-
-	if correct:
-		_on_note_correct(syl)
-	else:
-		_on_note_wrong()
-
-# ── Lógica de validação ──────────────────────────────────────────────────────
-
-func _on_note_correct(syl: SyllableData) -> void:
-	_current_note_index += 1
-
-	if _current_note_index >= syl.frequency_sequence.size():
-		# Sílaba completa
-		_current_syllable_index += 1
-		_current_note_index = 0
-		_input_buffer.clear()
-
-		if _current_syllable_index >= _current_signal.syllables.size():
-			_on_phrase_completed()
+		
+	# Verifica se apertou uma das teclas válidas do minigame (Q, W, E)
+	for i in FREQ_KEYS.size():
+		if event.keycode == FREQ_KEYS[i]:
+			_on_frequency_pressed(i)
+			get_viewport().set_input_as_handled()
 			return
 
-		_update_feedback("✓ Sílaba correta!")
+## Processa a entrada de uma nota/frequência
+func _on_frequency_pressed(freq_index: int) -> void:
+	if not _is_active or not _current_signal:
+		return
+		
+	_animate_freq_button(freq_index)
+	
+	if _current_syllable_index >= _current_signal.syllables.size():
+		return
+		
+	var current_syllable: SyllableData = _current_signal.syllables[_current_syllable_index]
+	
+	# SEGURANÇA: Se por algum motivo a sílaba estiver trancada
+	if "is_unlocked" in current_syllable and not current_syllable.is_unlocked:
+		_update_feedback("Sílaba bloqueada! Busque mais áudios da ave.")
+		return
+	
+	var expected_pitch = current_syllable.frequency_sequence[_current_note_index]
+	
+	if freq_index == expected_pitch:
+		# Acertou a nota!
+		_current_note_index += 1
+		_update_feedback("Nota correta!")
+		
+		if syllable_slots and syllable_slots.get_child_count() > _current_syllable_index:
+			var slot = syllable_slots.get_child(_current_syllable_index)
+			_flash_node(slot, Color.GREEN)
+			
+		if _current_note_index >= current_syllable.frequency_sequence.size():
+			# Completou a sílaba inteira! Avança.
+			_advance_syllable()
 	else:
-		_update_feedback("✓ Nota correta, continue a sílaba…")
+		# Errou a nota da sequência, reseta o progresso desta sílaba
+		_current_note_index = 0
+		_update_feedback("Incorreto! Recomeçando esta sílaba...")
+		if syllable_slots and syllable_slots.get_child_count() > _current_syllable_index:
+			var slot = syllable_slots.get_child(_current_syllable_index)
+			_flash_node(slot, Color.RED)
 
-	sonogram_display.set_cursor(_current_syllable_index, _current_note_index)
-	_update_phrase_progress()
-
-func _on_note_wrong() -> void:
+func _advance_syllable() -> void:
 	_current_note_index = 0
-	_input_buffer.clear()
-	sonogram_display.set_cursor(_current_syllable_index, 0)
-	_update_feedback("✗ Errou! Recomece a sílaba.")
-	_shake_panel()
+	_current_syllable_index += 1
+	
+	# Se ainda restam sílabas
+	if _current_syllable_index < _current_signal.syllables.size():
+		var next_syllable = _current_signal.syllables[_current_syllable_index]
+		
+		# VALIDAÇÃO DE BLOQUEIO: Se a próxima sílaba estiver trancada, barra!
+		if "is_unlocked" in next_syllable and not next_syllable.is_unlocked:
+			_update_feedback("Áudio com interferência... Encontre a ave em outro ponto!")
+			_is_active = false
+			
+			await get_tree().create_timer(2.0).timeout
+			minigame_cancelled.emit()
+			close()
+			return
+			
+		_update_phrase_progress()
+	else:
+		# Passou de todas as sílabas, vitória total!
+		_update_feedback("Estudo concluído com sucesso!")
+		set_process_unhandled_key_input(false)
+		
+		SignalBook.learn_signal(_current_signal)
+		minigame_completed.emit(_current_signal)
+		
+		await get_tree().create_timer(1.5).timeout
+		close()
 
-func _on_phrase_completed() -> void:
-	_update_feedback("✓✓ Canto aprendido!")
-	_update_phrase_progress()
-	SignalBook.learn_signal(_current_signal)
-	await get_tree().create_timer(1.5).timeout
-	minigame_completed.emit(_current_signal)
-	close()
+# ── Construção Dinâmica da UI ────────────────────────────────────────────────
 
-# ── Construção de UI ─────────────────────────────────────────────────────────
+func _build_syllable_ui() -> void:
+	if not syllable_slots:
+		return
+	for child in syllable_slots.get_children():
+		child.queue_free()
+		
+	for syllable in _current_signal.syllables:
+		var slot := Label.new()
+		slot.theme_type_variation = "HeaderLarge"
+		
+		# Mostra a Letra se destravado, senão "?"
+		if "is_unlocked" in syllable and syllable.is_unlocked:
+			slot.text = " %s " % syllable.label
+			slot.modulate = syllable.color
+		else:
+			slot.text = " ? "
+			slot.modulate = Color.DARK_GRAY
+			
+		syllable_slots.add_child(slot)
 
-func _build_freq_buttons() -> void:
+func _build_frequency_buttons() -> void:
+	if not freq_buttons:
+		return
 	for child in freq_buttons.get_children():
 		child.queue_free()
 
@@ -158,7 +187,7 @@ func _build_freq_buttons() -> void:
 		btn.pressed.connect(_on_frequency_pressed.bind(i))
 		freq_buttons.add_child(btn)
 
-# ── Feedback visual ──────────────────────────────────────────────────────────
+# ── Feedback visual / Tweens Corrigidos ──────────────────────────────────────
 
 func _update_feedback(text: String) -> void:
 	if feedback_label:
@@ -177,16 +206,15 @@ func _animate_freq_button(freq_index: int) -> void:
 		return
 	var btn: Button = freq_buttons.get_child(freq_index)
 	var tween := create_tween()
+	# Corrigido aspas corrompidas para strings limpas
 	tween.tween_property(btn, "scale", Vector2(1.25, 1.25), 0.06)
-	tween.tween_property(btn, "scale", Vector2(1.00, 1.00), 0.10)
+	tween.tween_property(btn, "scale", Vector2(1.0, 1.0), 0.06)
 
-func _shake_panel() -> void:
-	var panel: Control = $Panel
-	if not panel:
+func _flash_node(node: Control, color: Color) -> void:
+	if not node:
 		return
-	var origin := panel.position
+	var orig_color := node.modulate
 	var tween := create_tween()
-	tween.tween_property(panel, "position", origin + Vector2(8, 0), 0.05)
-	tween.tween_property(panel, "position", origin - Vector2(8, 0), 0.05)
-	tween.tween_property(panel, "position", origin + Vector2(4, 0), 0.04)
-	tween.tween_property(panel, "position", origin, 0.04)
+	# Corrigido aspas corrompidas para strings limpas
+	tween.tween_property(node, "modulate", color, 0.1)
+	tween.tween_property(node, "modulate", orig_color, 0.1)

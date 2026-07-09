@@ -81,6 +81,10 @@ offset_bottom = 40.0
 script = ExtResource("3_u1ghf")
 metadata/_custom_type_script = "uid://c2ch13f6s2oji"
 
+[node name="SyllableSlots" type="HBoxContainer" parent="Panel/VBox" unique_id=47565984]
+visible = false
+layout_mode = 2
+
 [node name="FreqButtons" type="HBoxContainer" parent="Panel/VBox" unique_id=1350511806]
 layout_mode = 2
 

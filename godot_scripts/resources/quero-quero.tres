@@ -4,9 +4,14 @@
 [ext_resource type="AudioStream" uid="uid://bqlawtsgqkoyc" path="res://Audio/quero-quero.mp3" id="1_sca6n"]
 [ext_resource type="Script" uid="uid://c3nnlsb7s4usg" path="res://godot_scripts/resources/syllable_data.gd" id="2_sca6n"]
 
+[sub_resource type="Resource" id="Resource_j3pel"]
+script = ExtResource("2_sca6n")
+metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
+
 [resource]
 script = ExtResource("1_1trt0")
 signal_id = "quero-quero"
 display_name = "Quero Quero"
 bird_audio = ExtResource("1_sca6n")
+syllables = Array[ExtResource("2_sca6n")]([SubResource("Resource_j3pel")])
 metadata/_custom_type_script = "uid://da3h744gsv7h4"

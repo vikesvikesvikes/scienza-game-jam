@@ -1,7 +1,6 @@
 extends Node
 
 ## Autoload singleton — adicione em Project > Project Settings > Autoload
-## Nome sugerido: "SignalBook"
 
 ## Emitido quando um novo sinal é aprendido
 signal signal_learned(signal_data: SignalData)
@@ -34,3 +33,22 @@ func has_all(required_ids: Array[String]) -> bool:
 ## Limpa o inventário (útil para testes / novo jogo)
 func clear() -> void:
 	learned_signals.clear()
+
+## Desbloqueia as sílabas do SignalData baseadas no número de encontros atuais
+func unlock_syllables_for_encounter(signal_data: SignalData, encounter_count: int) -> void:
+	for syllable in signal_data.syllables:
+		# Se a sílaba exigir um encontro menor ou igual ao atual, ela destrava
+		if syllable.has_method("get") and "required_encounter" in syllable:
+			if syllable.required_encounter <= encounter_count:
+				syllable.is_unlocked = true
+		else:
+			# Se você ainda não configurou a variável required_encounter nela, 
+			# por padrão deixamos destravada para não quebrar o jogo
+			syllable.is_unlocked = true
+
+## Verifica se todas as sílabas daquela ave já foram desbloqueadas
+func is_bird_fully_studied(signal_data: SignalData) -> bool:
+	for syllable in signal_data.syllables:
+		if "is_unlocked" in syllable and not syllable.is_unlocked:
+			return false
+	return true

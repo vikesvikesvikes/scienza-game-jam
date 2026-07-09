@@ -188,6 +188,7 @@ func _trigger_bird_call() -> void:
 		if signal_data and signal_data.bird_audio:
 				# Usa arquivo real
 				bird_player.play()
+				_play_noise()
 				# Ativa o sonograma temporal se estiver presente como filho
 				if bird_sonogram:
 						bird_sonogram.analyze(bird_player)

@@ -9,4 +9,5 @@ script = ExtResource("1_tlutm")
 signal_id = "bem-te-vi"
 display_name = "Bem Te Vi"
 bird_audio = ExtResource("1_o883o")
+syllables = Array[ExtResource("2_o883o")]([null])
 metadata/_custom_type_script = "uid://da3h744gsv7h4"
