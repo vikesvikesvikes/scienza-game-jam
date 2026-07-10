@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpecgkj0fadpv"
-path="res://.godot/imported/Test_MapBrasil_v1.png-363113084931c7fa14a3870007eff70d.ctex"
+uid="uid://e2jj2mk5prct"
+path="res://.godot/imported/Idle_Down.png-e13b9cb73519af48c0f692f1bc74650a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Test_MapBrasil_v1.png"
-dest_files=["res://.godot/imported/Test_MapBrasil_v1.png-363113084931c7fa14a3870007eff70d.ctex"]
+source_file="res://godot_scripts/scenes/Player/Idle/Idle_Down.png"
+dest_files=["res://.godot/imported/Idle_Down.png-e13b9cb73519af48c0f692f1bc74650a.ctex"]
 
 [params]
 

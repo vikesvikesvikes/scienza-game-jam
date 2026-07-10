@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cmrcarif2p40" path="res://godot_scripts/scenes/repertoire_minigame/RepertoireMinigame.tscn" id="5_2diwr"]
 [ext_resource type="Resource" uid="uid://cblva5h6e2msk" path="res://godot_scripts/resources/bem-te-vi.tres" id="5_q7kgm"]
 [ext_resource type="PackedScene" uid="uid://cdt1dlugligxj" path="res://godot_scripts/scenes/analyzer/BirdSonogram.tscn" id="7_f6rnu"]
-[ext_resource type="Texture2D" uid="uid://dpecgkj0fadpv" path="res://Images/Test_MapBrasil_v1.png" id="9_6x1rk"]
+[ext_resource type="Texture2D" uid="uid://bvcgi02v3ag2v" path="res://Images/Test_MapBrasil_v3.png" id="10_q7kgm"]
 
 [node name="TestScene" type="Node2D" unique_id=1298118175]
 script = ExtResource("1_hkoiq")
@@ -39,7 +39,7 @@ position = Vector2(1332, 1200)
 linked_emitter = NodePath("../RadioEmitter_2")
 
 [node name="CharacterBody2D" parent="." unique_id=703065713 instance=ExtResource("4_f6rnu")]
-position = Vector2(1345, 1308)
+position = Vector2(1147, 1357)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=449121970]
 
@@ -52,6 +52,8 @@ position = Vector2(521, 290)
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=261245102]
 z_index = -100
-offset_right = 2000.0
-offset_bottom = 2000.0
-texture = ExtResource("9_6x1rk")
+offset_top = -11.999999
+offset_right = 3000.0
+offset_bottom = 2988.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("10_q7kgm")
