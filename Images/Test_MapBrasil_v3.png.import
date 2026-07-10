@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpecgkj0fadpv"
-path="res://.godot/imported/Test_MapBrasil_v1.png-363113084931c7fa14a3870007eff70d.ctex"
+uid="uid://bvcgi02v3ag2v"
+path="res://.godot/imported/Test_MapBrasil_v3.png-5e3d0426b3f7f26e978b1220ffb3292d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Test_MapBrasil_v1.png"
-dest_files=["res://.godot/imported/Test_MapBrasil_v1.png-363113084931c7fa14a3870007eff70d.ctex"]
+source_file="res://Images/Test_MapBrasil_v3.png"
+dest_files=["res://.godot/imported/Test_MapBrasil_v3.png-5e3d0426b3f7f26e978b1220ffb3292d.ctex"]
 
 [params]
 
