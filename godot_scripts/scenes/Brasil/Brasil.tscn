@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ce6b2pfo71fmi"]
+
+[ext_resource type="PackedScene" uid="uid://crvw34ntx1gvk" path="res://godot_scripts/scenes/Player/Player.tscn" id="1_othvi"]
+[ext_resource type="AudioStream" uid="uid://l5wsle8nx17r" path="res://Audio/Music/funk-8bits.mp3" id="2_b8wa3"]
+[ext_resource type="Texture2D" uid="uid://bvcgi02v3ag2v" path="res://Images/Test_MapBrasil_v3.png" id="3_aykqu"]
+[ext_resource type="PackedScene" uid="uid://ccjkr2l17q4qs" path="res://godot_scripts/scenes/Brasil/Portal.tscn" id="5_aykqu"]
+
+[node name="Mapa" type="Node2D" unique_id=191315383]
+
+[node name="CharacterBody2D" parent="." unique_id=703065713 instance=ExtResource("1_othvi")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1283783490]
+stream = ExtResource("2_b8wa3")
+autoplay = true
+parameters/looping = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=923656455]
+z_index = -100
+offset_left = -1148.0
+offset_top = -1346.0
+offset_right = 1852.0
+offset_bottom = 1654.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_aykqu")
+
+[node name="Portal" parent="." unique_id=1600343249 instance=ExtResource("5_aykqu")]
+position = Vector2(144, 22)
+cena_destino_path = "uid://bawfibasguwbk"

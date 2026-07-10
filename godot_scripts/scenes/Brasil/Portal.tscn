@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ccjkr2l17q4qs"]
+
+[ext_resource type="Script" uid="uid://ct4vere550dhl" path="res://godot_scripts/scenes/Brasil/portal.gd" id="1_a3bjp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cuuk3"]
+
+[sub_resource type="FontVariation" id="FontVariation_gx26c"]
+
+[sub_resource type="FontVariation" id="FontVariation_mvfcr"]
+base_font = SubResource("FontVariation_gx26c")
+
+[node name="Portal" type="Area2D" unique_id=1600343249]
+script = ExtResource("1_a3bjp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=659415318]
+shape = SubResource("CircleShape2D_cuuk3")
+
+[node name="IndicadorUI" type="Node2D" parent="." unique_id=1400431771]
+visible = false
+
+[node name="Label" type="Label" parent="IndicadorUI" unique_id=1026029662]
+offset_left = -11.0
+offset_top = -40.0
+offset_right = 12.0
+offset_bottom = -17.0
+theme_override_colors/font_color = Color(0.9037219, 0.8539053, 0.19215205, 1)
+theme_override_fonts/font = SubResource("FontVariation_mvfcr")
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

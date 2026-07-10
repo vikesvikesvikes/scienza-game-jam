@@ -4,11 +4,7 @@ var pieces = []
 
 var is_dragging = false # evita arrastar 2 imagens 
 const images = [
-	"res://Images/puzzle/1.jpg",
-	"res://Images/puzzle/2.jpg",
-	"res://Images/puzzle/3.jpg",
-	"res://Images/puzzle/4.jpg",
-	"res://Images/puzzle/5.jpg"
+	"res://Images/puzzle/1.png"
 ]
 
 
