@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2ku0xctohqqt"
-path="res://.godot/imported/ForestNpcs_Animations.png-d7ef4375a616568e85b1aa639722bf23.ctex"
+uid="uid://e2jj2mk5prct"
+path="res://.godot/imported/Idle_Down.png-e13b9cb73519af48c0f692f1bc74650a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://godot_scripts/scenes/Player/ForestNpcs_Animations.png"
-dest_files=["res://.godot/imported/ForestNpcs_Animations.png-d7ef4375a616568e85b1aa639722bf23.ctex"]
+source_file="res://godot_scripts/scenes/Player/Idle/Idle_Down.png"
+dest_files=["res://.godot/imported/Idle_Down.png-e13b9cb73519af48c0f692f1bc74650a.ctex"]
 
 [params]
 
