@@ -25,4 +25,4 @@ texture = ExtResource("3_aykqu")
 
 [node name="Portal" parent="." unique_id=1600343249 instance=ExtResource("5_aykqu")]
 position = Vector2(144, 22)
-cena_destino_path = "uid://bawfibasguwbk"
+cena_destino_path = "uid://bcuigsa3bow2l"
