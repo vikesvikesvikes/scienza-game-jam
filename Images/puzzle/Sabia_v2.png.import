@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jaqpd8nuvrgc"
-path="res://.godot/imported/Sabia_v2.png-c421e3224ab355180baaef2428d3ef9d.ctex"
+path="res://.godot/imported/Sabia_v2.png-905a0a4213edc48286011e3a2047adf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Sabia_v2.png"
-dest_files=["res://.godot/imported/Sabia_v2.png-c421e3224ab355180baaef2428d3ef9d.ctex"]
+source_file="res://Images/puzzle/Sabia_v2.png"
+dest_files=["res://.godot/imported/Sabia_v2.png-905a0a4213edc48286011e3a2047adf0.ctex"]
 
 [params]
 

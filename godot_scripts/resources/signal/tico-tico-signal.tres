@@ -1,25 +1,26 @@
 [gd_resource type="Resource" script_class="SignalData" format=3 uid="uid://dqy0ovf6ylgf0"]
 
-[ext_resource type="AudioStream" uid="uid://mxfuklal07km" path="res://Audio/tico-tico.mp3" id="1_37ryq"]
 [ext_resource type="Resource" uid="uid://6gtlw04vyyr" path="res://godot_scripts/resources/data/tico-tico-data.tres" id="1_jaged"]
-[ext_resource type="Texture2D" uid="uid://do7mx0f12a5vb" path="res://icon.svg" id="2_jaged"]
+[ext_resource type="AudioStream" uid="uid://basg2f7ftvgjf" path="res://tico_tico_cerrado.wav" id="2_jaged"]
+[ext_resource type="Texture2D" uid="uid://hx70ie5d4kh" path="res://Images/puzzle/TicoTico_v2.png" id="3_jaged"]
 [ext_resource type="Script" uid="uid://da3h744gsv7h4" path="res://godot_scripts/resources/signal_data.gd" id="3_lindh"]
 [ext_resource type="Script" uid="uid://c3nnlsb7s4usg" path="res://godot_scripts/resources/syllable_data.gd" id="4_hqcwl"]
 
 [sub_resource type="Resource" id="Resource_j3pel"]
 script = ExtResource("4_hqcwl")
-frequency_sequence = Array[int]([2])
+frequency_sequence = Array[int]([2, 0, 2])
+required_encounter = 1
 metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
 
 [sub_resource type="Resource" id="Resource_g28q7"]
 script = ExtResource("4_hqcwl")
-frequency_sequence = Array[int]([0, 2, 0, 2, 0, 2, 2])
+frequency_sequence = Array[int]([0, 1, 0])
 required_encounter = 2
 metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
 
 [sub_resource type="Resource" id="Resource_q7kgm"]
 script = ExtResource("4_hqcwl")
-frequency_sequence = Array[int]([2, 1, 2])
+frequency_sequence = Array[int]([1, 1, 2])
 required_encounter = 3
 metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
 
@@ -28,7 +29,7 @@ script = ExtResource("3_lindh")
 signal_id = "tico-tico"
 display_name = "Tico Tico"
 biological_data = ExtResource("1_jaged")
-puzzle_image = ExtResource("2_jaged")
-bird_audio = ExtResource("1_37ryq")
+puzzle_image = ExtResource("3_jaged")
+bird_audio = ExtResource("2_jaged")
 syllables = Array[ExtResource("4_hqcwl")]([SubResource("Resource_j3pel"), SubResource("Resource_g28q7"), SubResource("Resource_q7kgm")])
 noise_type = 1

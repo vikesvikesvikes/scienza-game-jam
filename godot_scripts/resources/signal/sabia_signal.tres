@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="SignalData" format=3 uid="uid://dthel6ckmcyd3"]
+
+[ext_resource type="Resource" uid="uid://c71o00yq8uwj0" path="res://godot_scripts/resources/data/sabia-data.tres" id="1_3rwdg"]
+[ext_resource type="Script" uid="uid://da3h744gsv7h4" path="res://godot_scripts/resources/signal_data.gd" id="1_gta13"]
+[ext_resource type="AudioStream" uid="uid://bp1w3po2rrme2" path="res://sabia_mata_atlantica.wav" id="2_kajio"]
+[ext_resource type="Script" uid="uid://c3nnlsb7s4usg" path="res://godot_scripts/resources/syllable_data.gd" id="2_kr8nq"]
+[ext_resource type="Texture2D" uid="uid://jaqpd8nuvrgc" path="res://Images/puzzle/Sabia_v2.png" id="2_ppr1k"]
+
+[sub_resource type="Resource" id="Resource_3rwdg"]
+script = ExtResource("2_kr8nq")
+frequency_sequence = Array[int]([1, 0, 2])
+required_encounter = 1
+metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
+
+[sub_resource type="Resource" id="Resource_ppr1k"]
+script = ExtResource("2_kr8nq")
+frequency_sequence = Array[int]([0, 1, 2])
+required_encounter = 2
+metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
+
+[sub_resource type="Resource" id="Resource_kajio"]
+script = ExtResource("2_kr8nq")
+frequency_sequence = Array[int]([2, 1, 1])
+required_encounter = 3
+metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
+
+[resource]
+script = ExtResource("1_gta13")
+signal_id = "sabia-laranjeira"
+display_name = "Sabia Laranjeira"
+biological_data = ExtResource("1_3rwdg")
+puzzle_image = ExtResource("2_ppr1k")
+bird_audio = ExtResource("2_kajio")
+syllables = Array[ExtResource("2_kr8nq")]([SubResource("Resource_3rwdg"), SubResource("Resource_ppr1k"), SubResource("Resource_kajio")])
+metadata/_custom_type_script = "uid://da3h744gsv7h4"

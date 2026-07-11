@@ -23,12 +23,10 @@ func learn_signal(signal_data: SignalData) -> void:
 	signal_learned.emit(signal_data)
 	print("[SignalBook] Aprendido: ", signal_data.display_name)
 
-## Verifica se o jogador tem todos os sinais de uma lista (usado pelo GateNode)
-func has_all(required_ids: Array[String]) -> bool:
-	for id in required_ids:
-		if not check_signal(id):
-			return false
-	return true
+func is_bird_fully_studied(signal_data: SignalData, current_encounters: int) -> bool:
+	if not signal_data:
+		return false
+	return current_encounters >= signal_data.required_encounters_to_fully_study
 
 ## Limpa o inventário (útil para testes / novo jogo)
 func clear() -> void:
@@ -46,9 +44,28 @@ func unlock_syllables_for_encounter(signal_data: SignalData, encounter_count: in
 			# por padrão deixamos destravada para não quebrar o jogo
 			syllable.is_unlocked = true
 
-## Verifica se todas as sílabas daquela ave já foram desbloqueadas
-func is_bird_fully_studied(signal_data: SignalData) -> bool:
-	for syllable in signal_data.syllables:
-		if "is_unlocked" in syllable and not syllable.is_unlocked:
-			return false
-	return true
+func get_unlocked_encyclopedia_data(signal_data: SignalData) -> Dictionary:
+	var info = {
+		"cientifica": false,
+		"biologia": false,
+		"distribuicao": false
+	}
+	
+	if not signal_data or not signal_data.biological_data:
+		return info
+		
+	var encontros = GameManager.get_encounter_count(signal_data.signal_id)
+	
+	# 1º Encontro: Grupo Informações Científicas
+	if encontros >= 1:
+		info["cientifica"] = true
+		
+	# 2º Encontro: Dados de Biologia e Habitat
+	if encontros >= 2:
+		info["biologia"] = true
+		
+	# 3º Encontro: Distribuição Geográfica e Curiosidades
+	if encontros >= 3:
+		info["distribuicao"] = true
+		
+	return info

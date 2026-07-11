@@ -23,15 +23,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xtcfs")
 
-[node name="Backdrop" type="ColorRect" parent="." unique_id=1653798275]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.6901961)
-
 [node name="Panel" type="Panel" parent="." unique_id=805987152]
 layout_mode = 1
 anchors_preset = 8
@@ -82,7 +73,6 @@ script = ExtResource("3_u1ghf")
 metadata/_custom_type_script = "uid://c2ch13f6s2oji"
 
 [node name="SyllableSlots" type="HBoxContainer" parent="Panel/VBox" unique_id=47565984]
-visible = false
 layout_mode = 2
 
 [node name="FreqButtons" type="HBoxContainer" parent="Panel/VBox" unique_id=1350511806]

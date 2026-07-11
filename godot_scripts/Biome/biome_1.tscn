@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://deoa3gb1xlx54" path="res://godot_scripts/scenes/radial_menu/RadialMenu.tscn" id="4_hhgs3"]
 [ext_resource type="PackedScene" uid="uid://cdt1dlugligxj" path="res://godot_scripts/scenes/analyzer/BirdSonogram.tscn" id="6_5f3aj"]
 [ext_resource type="PackedScene" uid="uid://c5oj5dmak2fl" path="res://godot_scripts/scenes/radio_emitter/RadioEmitter.tscn" id="6_c4feu"]
-[ext_resource type="Resource" uid="uid://cblva5h6e2msk" path="res://godot_scripts/resources/signal/bem-te-vi.tres" id="7_3qqkh"]
 [ext_resource type="PackedScene" uid="uid://qi6osj5b153x" path="res://godot_scripts/scenes/notebook/notebook_hud.tscn" id="7_4a081"]
 [ext_resource type="PackedScene" uid="uid://cdwsx008kqw36" path="res://godot_scripts/scenes/sweet_spot/SweetSpot.tscn" id="8_rbq33"]
+[ext_resource type="Resource" uid="uid://dthel6ckmcyd3" path="res://godot_scripts/resources/signal/sabia_signal.tres" id="9_4a081"]
 [ext_resource type="PackedScene" uid="uid://ce8rw1nklutli" path="res://godot_scripts/Biome/bird_hint.tscn" id="9_d73et"]
 
 [node name="Biome 1" type="Node2D" unique_id=1100493449]
@@ -70,16 +70,37 @@ children_offset = Vector2(0.815, -1.275)
 
 [node name="BirdSonogram" parent="HUD" unique_id=1131237019 instance=ExtResource("6_5f3aj")]
 visible = false
-position = Vector2(521, 290)
+position = Vector2(1231, 778)
 
 [node name="NotebookHud" parent="HUD" unique_id=1484437930 instance=ExtResource("7_4a081")]
 
 [node name="RadioEmitter" parent="." unique_id=1761621902 instance=ExtResource("6_c4feu")]
 position = Vector2(787, 1991)
-signal_data = ExtResource("7_3qqkh")
+signal_data = ExtResource("9_4a081")
 
 [node name="SweetSpot" parent="." unique_id=320517776 instance=ExtResource("8_rbq33")]
 position = Vector2(787, 1991)
 linked_emitter = NodePath("../RadioEmitter")
 
 [node name="BirdHint" parent="SweetSpot" unique_id=111305096 instance=ExtResource("9_d73et")]
+
+[node name="RadioEmitter2" parent="." unique_id=1425482870 instance=ExtResource("6_c4feu")]
+position = Vector2(1128, 2578)
+signal_data = ExtResource("9_4a081")
+
+[node name="SweetSpot2" parent="." unique_id=1359344872 instance=ExtResource("8_rbq33")]
+position = Vector2(1128, 2578)
+linked_emitter = NodePath("../RadioEmitter")
+
+[node name="BirdHint" parent="SweetSpot2" unique_id=2003308200 instance=ExtResource("9_d73et")]
+position = Vector2(1, 0)
+
+[node name="RadioEmitter3" parent="." unique_id=538993915 instance=ExtResource("6_c4feu")]
+position = Vector2(686, 3045)
+signal_data = ExtResource("9_4a081")
+
+[node name="SweetSpot3" parent="." unique_id=1900364800 instance=ExtResource("8_rbq33")]
+position = Vector2(686, 3045)
+linked_emitter = NodePath("../RadioEmitter")
+
+[node name="BirdHint" parent="SweetSpot3" unique_id=1625807808 instance=ExtResource("9_d73et")]

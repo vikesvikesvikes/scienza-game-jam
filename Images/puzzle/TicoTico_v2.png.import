@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hx70ie5d4kh"
-path="res://.godot/imported/TicoTico_v2.png-52d7a32ebf4cb35fae2d02b14cc39906.ctex"
+path="res://.godot/imported/TicoTico_v2.png-010265f09fd1c482dd316508808ea785.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/TicoTico_v2.png"
-dest_files=["res://.godot/imported/TicoTico_v2.png-52d7a32ebf4cb35fae2d02b14cc39906.ctex"]
+source_file="res://Images/puzzle/TicoTico_v2.png"
+dest_files=["res://.godot/imported/TicoTico_v2.png-010265f09fd1c482dd316508808ea785.ctex"]
 
 [params]
 

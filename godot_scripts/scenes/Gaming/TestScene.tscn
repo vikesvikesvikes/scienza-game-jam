@@ -2,35 +2,33 @@
 
 [ext_resource type="Script" uid="uid://cg0vnllmsi55" path="res://godot_scripts/scenes/Gaming/test_scene.gd" id="1_7awjy"]
 [ext_resource type="PackedScene" uid="uid://c5oj5dmak2fl" path="res://godot_scripts/scenes/radio_emitter/RadioEmitter.tscn" id="2_7tmmi"]
-[ext_resource type="Resource" uid="uid://sxj15838jt5j" path="res://godot_scripts/resources/signal/quero-quero.tres" id="3_haj7m"]
 [ext_resource type="Resource" uid="uid://dqy0ovf6ylgf0" path="res://godot_scripts/resources/signal/tico-tico-signal.tres" id="4_m4yhd"]
-[ext_resource type="Resource" uid="uid://cblva5h6e2msk" path="res://godot_scripts/resources/signal/bem-te-vi.tres" id="5_1i460"]
 [ext_resource type="PackedScene" uid="uid://cdwsx008kqw36" path="res://godot_scripts/scenes/sweet_spot/SweetSpot.tscn" id="6_wh4rp"]
 [ext_resource type="PackedScene" uid="uid://crvw34ntx1gvk" path="res://godot_scripts/scenes/Player/Player.tscn" id="7_s45gk"]
+[ext_resource type="PackedScene" uid="uid://qi6osj5b153x" path="res://godot_scripts/scenes/notebook/notebook_hud.tscn" id="8_3d2bb"]
 [ext_resource type="PackedScene" uid="uid://cmrcarif2p40" path="res://godot_scripts/scenes/repertoire_minigame/RepertoireMinigame.tscn" id="8_13vx1"]
-[ext_resource type="PackedScene" uid="uid://cdt1dlugligxj" path="res://godot_scripts/scenes/analyzer/BirdSonogram.tscn" id="9_nhdxx"]
 
 [node name="GamingScene" type="Node2D" unique_id=1298118175]
 script = ExtResource("1_7awjy")
 
 [node name="RadioEmitter_1" parent="." unique_id=1761621902 instance=ExtResource("2_7tmmi")]
-position = Vector2(1029, 433)
-signal_data = ExtResource("3_haj7m")
+position = Vector2(926, 900)
+signal_data = ExtResource("4_m4yhd")
 
 [node name="RadioEmitter_2" parent="." unique_id=1278498252 instance=ExtResource("2_7tmmi")]
 position = Vector2(1339, 1114)
 signal_data = ExtResource("4_m4yhd")
 
 [node name="RadioEmitter_3" parent="." unique_id=1027619924 instance=ExtResource("2_7tmmi")]
-position = Vector2(487, 597)
-signal_data = ExtResource("5_1i460")
+position = Vector2(813, 1383)
+signal_data = ExtResource("4_m4yhd")
 
 [node name="SweetSpot_1" parent="." unique_id=320517776 instance=ExtResource("6_wh4rp")]
-position = Vector2(1131, 354)
+position = Vector2(1028, 821)
 linked_emitter = NodePath("../RadioEmitter_1")
 
 [node name="SweetSpot_3" parent="." unique_id=465174817 instance=ExtResource("6_wh4rp")]
-position = Vector2(476, 714)
+position = Vector2(802, 1500)
 linked_emitter = NodePath("../RadioEmitter_3")
 
 [node name="SweetSpot_2" parent="." unique_id=510134844 instance=ExtResource("6_wh4rp")]
@@ -43,8 +41,5 @@ position = Vector2(1147, 1357)
 [node name="HUD" type="CanvasLayer" parent="." unique_id=449121970]
 
 [node name="RepertoireMinigame" parent="HUD" unique_id=656648358 instance=ExtResource("8_13vx1")]
-visible = false
 
-[node name="BirdSonogram" parent="HUD" unique_id=1131237019 instance=ExtResource("9_nhdxx")]
-visible = false
-position = Vector2(521, 290)
+[node name="NotebookHud" parent="HUD" unique_id=1484437930 instance=ExtResource("8_3d2bb")]

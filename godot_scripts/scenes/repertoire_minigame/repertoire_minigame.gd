@@ -1,30 +1,20 @@
 class_name RepertoireMinigame
 extends Control
 
-const FREQ_KEYS: Array[Key] = [KEY_Q, KEY_W, KEY_E]
-
-## Rótulos exibidos nos botões (tecla + altura)
-const FREQ_LABELS: Array[String] = [
-	"Q\nGrave",
-	"W\nNeutro",
-	"E\nAgudo",
-]
-
-## Cores dos 3 canais de frequência
-const FREQ_COLORS: Array[Color] = [
-	Color(0.4, 0.9, 0.8),   # Q — ciano       (Grave)
-	Color(0.5, 1.0, 0.5),   # W — verde       (Neutro)
-	Color(1.0, 0.75, 0.2),  # E — amarelo     (Agudo)
-]
-
-## Emitido ao concluir com sucesso
+# Sinais necessários para a comunicação com o resto do jogo
 signal minigame_completed(signal_data: SignalData)
-## Emitido ao fechar sem terminar
 signal minigame_cancelled
 
-@onready var bird_name_label: Label   = $Panel/TitleBar/BirdNameLabel
+# Mapeamento dos botões numéricos para índices de pitch (0, 1, 2)
+const PITCH_INDEXES = {
+	KEY_1: 0, # Grave
+	KEY_2: 1, # Neutro
+	KEY_3: 2  # Agudo
+}
+
+@onready var radial_menu: Control          = $RadialMenu 
+@onready var bird_name_label: Label        = $Panel/TitleBar/BirdNameLabel
 @onready var syllable_slots: HBoxContainer = $Panel/VBox/SyllableSlots
-@onready var freq_buttons: HBoxContainer   = $Panel/VBox/FreqButtons
 @onready var feedback_label: Label         = $Panel/VBox/FeedbackLabel
 @onready var phrase_progress: Label        = $Panel/VBox/PhraseProgress
 
@@ -35,9 +25,11 @@ var _is_active: bool = false
 
 func _ready() -> void:
 	visible = false
+	if radial_menu:
+		radial_menu.enabled = false 
+		radial_menu.slot_selected.connect(_on_radial_slot_selected)
 	set_process_unhandled_key_input(false)
 
-## Abre a interface do mini-game para o pássaro atual
 func open(signal_data: SignalData) -> void:
 	if not signal_data:
 		return
@@ -50,50 +42,76 @@ func open(signal_data: SignalData) -> void:
 		bird_name_label.text = _current_signal.display_name
 		
 	_build_syllable_ui()
-	_build_frequency_buttons()
 	_update_phrase_progress()
-	_update_feedback("Digite a sequência de notas usando Q, W, E")
+	_update_feedback("Segure TAB para abrir o Menu Radial e use 1, 2, 3")
 	
 	visible = true
 	set_process_unhandled_key_input(true)
 
-## Fecha o mini-game limpando referências
 func close() -> void:
 	visible = false
 	_is_active = false
+	if radial_menu:
+		radial_menu.enabled = false
 	set_process_unhandled_key_input(false)
 	_current_signal = null
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if not _is_active or not event.is_pressed() or event.is_echo():
+	if not _is_active:
 		return
 		
-	# Tecla ESC cancela/fecha o estudo
+	# Tecla ESC cancela o estudo
 	if event.is_action_pressed("ui_cancel"):
 		minigame_cancelled.emit()
 		close()
 		return
 		
-	# Verifica se apertou uma das teclas válidas do minigame (Q, W, E)
-	for i in FREQ_KEYS.size():
-		if event.keycode == FREQ_KEYS[i]:
-			_on_frequency_pressed(i)
+	# Gerenciamento do HOLD da tecla TAB para exibir o Menu Radial
+	if event.is_action_pressed("ui_focus_next"): 
+		if radial_menu and not radial_menu.enabled:
+			radial_menu.enabled = true
+			radial_menu.visible = true
+			_update_feedback("Menu Radial Ativo. Escolha o Pitch!")
+			get_viewport().set_input_as_handled()
+			return
+			
+	if event.is_action_released("ui_focus_next"):
+		if radial_menu and radial_menu.enabled:
+			radial_menu.enabled = false
+			radial_menu.visible = false
 			get_viewport().set_input_as_handled()
 			return
 
-## Processa a entrada de uma nota/frequência
+	# Se o menu radial não estiver ativo (Tab solto), ignora os inputs de nota
+	if radial_menu and not radial_menu.enabled:
+		return
+
+	# Captura dos botões numéricos 1, 2 e 3 para validação direta de Pitch
+	if event is InputEventKey and event.is_pressed() and not event.is_echo():
+		if event.keycode in PITCH_INDEXES:
+			var target_pitch: int = PITCH_INDEXES[event.keycode]
+			
+			if radial_menu and radial_menu.has_method("set_temporary_selection"):
+				radial_menu.set_temporary_selection(target_pitch)
+				
+			_on_frequency_pressed(target_pitch)
+			get_viewport().set_input_as_handled()
+
+func _on_radial_slot_selected(_slot: Control, index: int) -> void:
+	if _is_active and radial_menu and radial_menu.enabled:
+		_on_frequency_pressed(index)
+		
+## Processa a entrada de uma nota/frequência e faz a validação lógica
 func _on_frequency_pressed(freq_index: int) -> void:
 	if not _is_active or not _current_signal:
 		return
-		
-	_animate_freq_button(freq_index)
 	
 	if _current_syllable_index >= _current_signal.syllables.size():
 		return
 		
 	var current_syllable: SyllableData = _current_signal.syllables[_current_syllable_index]
 	
-	# SEGURANÇA: Se por algum motivo a sílaba estiver trancada
+	# Segurança se a sílaba estiver trancada
 	if "is_unlocked" in current_syllable and not current_syllable.is_unlocked:
 		_update_feedback("Sílaba bloqueada! Busque mais áudios da ave.")
 		return
@@ -101,7 +119,6 @@ func _on_frequency_pressed(freq_index: int) -> void:
 	var expected_pitch = current_syllable.frequency_sequence[_current_note_index]
 	
 	if freq_index == expected_pitch:
-		# Acertou a nota!
 		_current_note_index += 1
 		_update_feedback("Nota correta!")
 		
@@ -110,17 +127,15 @@ func _on_frequency_pressed(freq_index: int) -> void:
 			_flash_node(slot, Color.GREEN)
 			
 		if _current_note_index >= current_syllable.frequency_sequence.size():
-			# Completou a sílaba inteira! Avança.
 			_advance_syllable()
 	else:
-		# Errou a nota da sequência, reseta o progresso desta sílaba
 		_current_note_index = 0
 		_update_feedback("Incorreto! Recomeçando esta sílaba...")
 		if syllable_slots and syllable_slots.get_child_count() > _current_syllable_index:
 			var slot = syllable_slots.get_child(_current_syllable_index)
 			_flash_node(slot, Color.RED)
 
-## API pública para entradas vindas de outras fontes (ex: Radial Menu do controle)
+## API pública para entradas vindas de outras fontes
 func receive_radial_input(freq_index: int) -> void:
 	if not _is_active:
 		return
@@ -130,11 +145,9 @@ func _advance_syllable() -> void:
 	_current_note_index = 0
 	_current_syllable_index += 1
 	
-	# Se ainda restam sílabas
 	if _current_syllable_index < _current_signal.syllables.size():
 		var next_syllable = _current_signal.syllables[_current_syllable_index]
 		
-		# VALIDAÇÃO DE BLOQUEIO: Se a próxima sílaba estiver trancada, barra!
 		if "is_unlocked" in next_syllable and not next_syllable.is_unlocked:
 			_update_feedback("Áudio com interferência... Encontre a ave em outro ponto!")
 			_is_active = false
@@ -146,17 +159,18 @@ func _advance_syllable() -> void:
 			
 		_update_phrase_progress()
 	else:
-		# Passou de todas as sílabas, vitória total!
 		_update_feedback("Estudo concluído com sucesso!")
 		set_process_unhandled_key_input(false)
 		
-		SignalBook.learn_signal(_current_signal)
+		if has_node("/root/SignalBook"):
+			get_node("/root/SignalBook").learn_signal(_current_signal)
+			
 		minigame_completed.emit(_current_signal)
 		
 		await get_tree().create_timer(1.5).timeout
 		close()
 
-# ── Construção Dinâmica da UI ────────────────────────────────────────────────
+# ── Construção Dinâmica da UI de Sílabas ─────────────────────────────────────
 
 func _build_syllable_ui() -> void:
 	if not syllable_slots:
@@ -168,7 +182,6 @@ func _build_syllable_ui() -> void:
 		var slot := Label.new()
 		slot.theme_type_variation = "HeaderLarge"
 		
-		# Mostra a Letra se destravado, senão "?"
 		if "is_unlocked" in syllable and syllable.is_unlocked:
 			slot.text = " %s " % syllable.label
 			slot.modulate = syllable.color
@@ -177,23 +190,6 @@ func _build_syllable_ui() -> void:
 			slot.modulate = Color.DARK_GRAY
 			
 		syllable_slots.add_child(slot)
-
-func _build_frequency_buttons() -> void:
-	if not freq_buttons:
-		return
-	for child in freq_buttons.get_children():
-		child.queue_free()
-
-	for i in FREQ_KEYS.size():
-		var btn := Button.new()
-		btn.name = "Freq_%d" % i
-		btn.text = FREQ_LABELS[i]
-		btn.custom_minimum_size = Vector2(80, 64)
-		btn.add_theme_color_override("font_color", FREQ_COLORS[i])
-		btn.pressed.connect(_on_frequency_pressed.bind(i))
-		freq_buttons.add_child(btn)
-
-# ── Feedback visual / Tweens Corrigidos ──────────────────────────────────────
 
 func _update_feedback(text: String) -> void:
 	if feedback_label:
@@ -207,20 +203,10 @@ func _update_phrase_progress() -> void:
 		min(_current_syllable_index + 1, total), total
 	]
 
-func _animate_freq_button(freq_index: int) -> void:
-	if freq_buttons.get_child_count() <= freq_index:
-		return
-	var btn: Button = freq_buttons.get_child(freq_index)
-	var tween := create_tween()
-	# Corrigido aspas corrompidas para strings limpas
-	tween.tween_property(btn, "scale", Vector2(1.25, 1.25), 0.06)
-	tween.tween_property(btn, "scale", Vector2(1.0, 1.0), 0.06)
-
 func _flash_node(node: Control, color: Color) -> void:
 	if not node:
 		return
 	var orig_color := node.modulate
 	var tween := create_tween()
-	# Corrigido aspas corrompidas para strings limpas
 	tween.tween_property(node, "modulate", color, 0.1)
 	tween.tween_property(node, "modulate", orig_color, 0.1)

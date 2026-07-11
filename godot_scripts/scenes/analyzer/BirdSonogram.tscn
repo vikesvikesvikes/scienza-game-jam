@@ -55,11 +55,9 @@ theme_override_constants/separation = 250
 
 [node name="Começo" type="Label" parent="PanelContainer/HBoxContainer/EixoX-Tempo/HBoxContainer" unique_id=967092537]
 layout_mode = 2
-text = "0:00"
 
 [node name="Meio" type="Label" parent="PanelContainer/HBoxContainer/EixoX-Tempo/HBoxContainer" unique_id=1210870506]
 layout_mode = 2
-text = "--"
 
 [node name="Fim" type="Label" parent="PanelContainer/HBoxContainer/EixoX-Tempo/HBoxContainer" unique_id=1482453013]
 layout_mode = 2

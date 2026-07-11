@@ -82,3 +82,17 @@ func check_win():
 		if piece.index != piece.cell_index:
 			return
 	print("Yeeeah!! Quebra-cabeça concluído!")
+	
+
+func get_available_pieces_count(signal_id: String) -> int:
+	var encontros = GameManager.get_encounter_count(signal_id)
+	var total_pecas = pieces.size()
+	
+	if encontros <= 0:
+		return 0
+	elif encontros == 1:
+		return int(total_pecas * 0.33) # Libera os primeiros 33% dos fragmentos
+	elif encontros == 2:
+		return int(total_pecas * 0.66) # Libera até 66% das peças
+	else:
+		return total_pecas # Sinal limpo (3+ encontros): Libera o quebra-cabeça inteiro!
