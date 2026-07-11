@@ -757,7 +757,6 @@ animations = [{
 script = ExtResource("1_swcsf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=999309341]
-position = Vector2(0, 10)
 rotation = -1.5702491
 scale = Vector2(5, 5)
 shape = SubResource("CapsuleShape2D_oejqm")
@@ -769,3 +768,4 @@ zoom = Vector2(3, 3)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ixpwb")
 animation = &"idle_down"
+offset = Vector2(0, -10)
