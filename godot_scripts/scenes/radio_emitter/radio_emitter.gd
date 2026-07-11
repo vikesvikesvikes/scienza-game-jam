@@ -185,18 +185,27 @@ func _fill_bird_buffer(delta: float) -> void:
 # ── Disparadores de som ────────────────────────────────────────────────────────
 
 func _trigger_bird_call() -> void:
-		if signal_data and signal_data.bird_audio:
-				# Usa arquivo real
-				bird_player.play()
-				_play_noise()
-				# Ativa o sonograma temporal se estiver presente como filho
-				if bird_sonogram:
-						bird_sonogram.analyze(bird_player)
-		else:
-				# Dispara chirp sintético (sem sonograma — não há arquivo de duração definida)
-				_bird_chirping = true
-				_bird_chirp_time = 0.0
-				_bird_phase = 0.0
+	if signal_data and signal_data.bird_audio:
+		# 1. Inicia o áudio do pássaro totalmente limpo
+		bird_player.play()
+		
+		# Ativa o sonograma se estiver presente
+		if bird_sonogram:
+			bird_sonogram.analyze(bird_player)
+			
+		# 2. Agenda o início do ruído com base no atraso definido no recurso (signal_data)
+		var delay = signal_data.get("noise_delay") if "noise_delay" in signal_data else 3.0
+		
+		# Cria um timer seguro na SceneTree; se o player sair do SweetSpot ou o nó morrer, 
+		# a checagem 'is_inside_tree()' impede ruídos fantasmas
+		await get_tree().create_timer(delay).timeout
+		if is_inside_tree() and _in_sweet_spot and bird_player.playing:
+			_play_noise()
+	else:
+		# Comportamento alternativo para chirp sintético
+		_bird_chirping = true
+		_bird_chirp_time = 0.0
+		_bird_phase = 0.0
 
 func _play_noise() -> void:
 		if signal_data and signal_data.noise_sounds.size() > 0:

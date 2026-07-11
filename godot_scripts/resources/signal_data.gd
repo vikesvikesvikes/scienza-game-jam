@@ -26,7 +26,7 @@ enum NoiseType { WIND, CARS, WATER, GENERIC }
 ## ── RUÍDO / INTERFERÊNCIA ───────────────────────────────────────────────────
 @export var noise_type: NoiseType = NoiseType.GENERIC
 @export var noise_sounds: Array[AudioStream] = []
-
+@export var noise_delay: float = 3.0
 ## ── DESBLOQUEIO ─────────────────────────────────────────────────────────────
 ## Quantos sinais diferentes são necessários no gate que usa este sinal
 ## (preenchido pelo GateNode, não aqui)
