@@ -1,9 +1,6 @@
 extends Node2D
 class_name BirdHint
 
-## Sequência de 4 cores mostrada no balão (0 = A, 1 = X, 2 = Y — mesmos índices da radial)
-@export var sequence: Array[int] = [0, 1, 2, 0]
-
 ## Tempo que cada cor fica sendo revelada
 @export var color_reveal_time: float = 0.5
 ## Tempo que a sequência completa fica visível antes de sumir
@@ -11,11 +8,11 @@ class_name BirdHint
 ## Pausa (balão escondido) antes de repetir
 @export var pause_between_loops: float = 2.0
 
-## Mesmas cores usadas na radial (A / X / Y)
+## Cores correspondentes às frequências: 0 = Grave, 1 = Neutro, 2 = Agudo
 const SLOT_COLORS = [
-	Color.RED,
-	Color.GREEN,
-	Color.BLUE,
+	Color(0.4, 0.9, 0.8),   # Grave (Ciano)
+	Color(0.5, 1.0, 0.5),   # Neutro (Verde)
+	Color(1.0, 0.75, 0.2),  # Agudo (Amarelo)
 ]
 const COLOR_OFF := Color(0.2, 0.2, 0.2)
 
@@ -29,39 +26,58 @@ const COLOR_OFF := Color(0.2, 0.2, 0.2)
 
 var _player_inside := false
 var _is_playing := false
+var _current_signal: SignalData
 
 func _ready() -> void:
 	speech_bubble.visible = false
 	_reset_slots()
 
-	# Se este nó estiver dentro de um SweetSpot, conecta automaticamente
 	var sweet_spot := get_parent()
 	if sweet_spot is SweetSpot:
-		sweet_spot.player_entered_sweetspot.connect(func(_emitter): start_hint())
+		sweet_spot.player_entered_sweetspot.connect(_on_player_entered)
 		sweet_spot.player_exited_sweetspot.connect(stop_hint)
 
-## Chamar quando o player entrar na área (se não estiver usando SweetSpot como pai)
+func _on_player_entered(emitter: RadioEmitter) -> void:
+	if emitter and emitter.signal_data:
+		_current_signal = emitter.signal_data
+	start_hint()
+
 func start_hint() -> void:
 	_player_inside = true
 	if not _is_playing:
 		_play_loop()
 
-## Chamar quando o player sair da área
 func stop_hint() -> void:
 	_player_inside = false
 	speech_bubble.visible = false
+	_current_signal = null
 
 func _play_loop() -> void:
 	_is_playing = true
 	while _player_inside:
+		# Descobre qual sílaba o jogador está tentando resolver no momento
+		var current_syllable_idx = GameManager.get_encounter_count(_current_signal.signal_id) - 1
+		current_syllable_idx = clamp(current_syllable_idx, 0, _current_signal.syllables.size() - 1)
+		
+		var syllable: SyllableData = _current_signal.syllables[current_syllable_idx]
+		var sequence: Array = syllable.frequency_sequence
+		
 		speech_bubble.visible = true
 		_reset_slots()
+
+		# Liga e desliga os slots com base no tamanho da sequência real da sílaba
+		for i in color_slots.size():
+			if i >= sequence.size():
+				color_slots[i].visible = false
+			else:
+				color_slots[i].visible = true
 
 		for i in sequence.size():
 			if not _player_inside:
 				break
-			var color_index: int = sequence[i]
-			color_slots[i].color = SLOT_COLORS[color_index]
+			var pitch_value: int = sequence[i]
+			if pitch_value < SLOT_COLORS.size():
+				color_slots[i].color = SLOT_COLORS[pitch_value]
 			await get_tree().create_timer(color_reveal_time).timeout
 
 		if _player_inside:
