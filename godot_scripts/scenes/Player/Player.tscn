@@ -14,8 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://dfbqeabq1ayxc" path="res://godot_scripts/scenes/Player/Idle/Idle_Right_Up.png" id="7_edusg"]
 [ext_resource type="Texture2D" uid="uid://ctoycfll0ldfh" path="res://godot_scripts/scenes/Player/Walk/walk_Right_Up.png" id="7_j10ai"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f012i"]
-size = Vector2(1.3999999, 2.1999998)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oejqm"]
+radius = 0.19982344
+height = 1.5999998
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8uncv"]
 atlas = ExtResource("2_oejqm")
@@ -756,9 +757,10 @@ animations = [{
 script = ExtResource("1_swcsf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=999309341]
-position = Vector2(0.49999997, 0.5)
+position = Vector2(0, 10)
+rotation = -1.5702491
 scale = Vector2(5, 5)
-shape = SubResource("RectangleShape2D_f012i")
+shape = SubResource("CapsuleShape2D_oejqm")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1270557901]
 zoom = Vector2(3, 3)
