@@ -12,6 +12,7 @@ enum NoiseType { WIND, CARS, WATER, GENERIC }
 ## Nome exibido na UI (ex: "Canto do Sabiá")
 @export var display_name: String = ""
 
+@export var puzzle_image: Texture2D
 ## Ícone do pássaro para o inventário (opcional)
 @export var bird_icon: Texture2D
 

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BirdEncyclopediaData" format=3 uid="uid://c71o00yq8uwj0"]
+
+[ext_resource type="Script" uid="uid://chy26vboc4nnv" path="res://godot_scripts/resources/bird_data.gd" id="1_sgb3p"]
+
+[resource]
+script = ExtResource("1_sgb3p")
+scientific_name = "Turdus Rufiventris"
+popular_names = Array[String](["Sabiá-Laranjeira", "Sabiá-Cavalo"])
+conservation_status = "Baixo risco"
+diet = "Insetos, minhocas e frutas maduras, incluindo frutas cultivadas como mamão.
+"
+habitats = "É comum em bordas de florestas, parques, quintais e áreas urbanas arborizadas. 
+"
+curiosity = "Foi imortalizado na “Canção do Exílio”, de Gonçalves Dias, juntou-se oficialmente aos outros quatro símbolos nacionais – a bandeira, o hino, o brasão de armas e o selo, passando a ter a mesma importância deles na representação do Brasil em 3 de outubro de 2002, por decreto do presidente Fernando Henrique Cardoso."
+region_northeast = true
+region_central_west = true
+region_southeast = true
+region_south = true
+metadata/_custom_type_script = "uid://chy26vboc4nnv"

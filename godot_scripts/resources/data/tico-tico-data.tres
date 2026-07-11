@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BirdEncyclopediaData" format=3 uid="uid://6gtlw04vyyr"]
+
+[ext_resource type="Script" uid="uid://chy26vboc4nnv" path="res://godot_scripts/resources/bird_data.gd" id="1_d7hu0"]
+
+[resource]
+script = ExtResource("1_d7hu0")
+scientific_name = "Coryphaspiza melanotis"
+english_name = "Black-masked finch "
+conservation_status = "Vulnerável "
+diet = "Grãos, sementes, frutos e insetos "
+habitats = "Habita campos com ou sem vegetação arbustiva, em regiões de capim alto. Porém, ainda foi pouco estudado."
+curiosity = "De padrões nítidos. O macho tem coroa, face, bochechas e ouvidos pretos. Sobrancelhas e partes inferiores brancas. Manchas pretas dos lados do peito. Nuca cinzenta se transformando em marrom nas costas, com listas finas. Asas oliváceas com amarelo nas carpais. Cauda preta com amplas pontas brancas, visíveis no voo. Bico de duas cores, parte de cima preta e mandíbula laranja. A fêmea é geralmente mais parda, com asas mais esverdeadas e sem preto nas costas."
+region_central_west = true
+region_southeast = true
+metadata/_custom_type_script = "uid://chy26vboc4nnv"

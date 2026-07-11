@@ -5,8 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://crvw34ntx1gvk" path="res://godot_scripts/scenes/Player/Player.tscn" id="3_5jxgl"]
 [ext_resource type="PackedScene" uid="uid://cmrcarif2p40" path="res://godot_scripts/scenes/repertoire_minigame/RepertoireMinigame.tscn" id="3_hhgs3"]
 [ext_resource type="PackedScene" uid="uid://deoa3gb1xlx54" path="res://godot_scripts/scenes/radial_menu/RadialMenu.tscn" id="4_hhgs3"]
+[ext_resource type="PackedScene" uid="uid://cdt1dlugligxj" path="res://godot_scripts/scenes/analyzer/BirdSonogram.tscn" id="6_5f3aj"]
 [ext_resource type="PackedScene" uid="uid://c5oj5dmak2fl" path="res://godot_scripts/scenes/radio_emitter/RadioEmitter.tscn" id="6_c4feu"]
-[ext_resource type="Resource" uid="uid://cblva5h6e2msk" path="res://godot_scripts/resources/bem-te-vi.tres" id="7_3qqkh"]
+[ext_resource type="Resource" uid="uid://cblva5h6e2msk" path="res://godot_scripts/resources/signal/bem-te-vi.tres" id="7_3qqkh"]
 [ext_resource type="PackedScene" uid="uid://cdwsx008kqw36" path="res://godot_scripts/scenes/sweet_spot/SweetSpot.tscn" id="8_rbq33"]
 [ext_resource type="PackedScene" uid="uid://ce8rw1nklutli" path="res://godot_scripts/Biome/bird_hint.tscn" id="9_d73et"]
 
@@ -51,6 +52,7 @@ position = Vector2(661, 3052)
 [node name="HUD" type="CanvasLayer" parent="." unique_id=833794037]
 
 [node name="RepertoireMinigame" parent="HUD" unique_id=656648358 instance=ExtResource("3_hhgs3")]
+visible = false
 
 [node name="RadialMenu" parent="HUD" unique_id=378127734 instance=ExtResource("4_hhgs3")]
 anchors_preset = 15
@@ -64,6 +66,10 @@ children_size = 110
 children_auto_sizing = true
 children_distance_offset = -0.01
 children_offset = Vector2(0.815, -1.275)
+
+[node name="BirdSonogram" parent="HUD" unique_id=1131237019 instance=ExtResource("6_5f3aj")]
+visible = false
+position = Vector2(521, 290)
 
 [node name="RadioEmitter" parent="." unique_id=1761621902 instance=ExtResource("6_c4feu")]
 position = Vector2(787, 1991)

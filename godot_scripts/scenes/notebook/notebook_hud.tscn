@@ -5,6 +5,10 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dqhev"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_mc5lh"]
+font_size = 25
+shadow_size = 3
+
 [node name="NotebookHud" type="Control" unique_id=1484437930]
 layout_mode = 3
 anchors_preset = 8
@@ -18,29 +22,181 @@ offset_right = 800.0
 offset_bottom = 460.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.8997866, 0.83749485)
 mouse_filter = 1
 script = ExtResource("1_rc8du")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=618247907]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.38928655, 0.38928664, 0.38928658, 1)
+
 [node name="OpenPages" type="HBoxContainer" parent="." unique_id=380533998]
 material = SubResource("CanvasItemMaterial_dqhev")
-layout_mode = 0
-offset_right = 1500.0
-offset_bottom = 820.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Puzzle" type="VBoxContainer" parent="OpenPages" unique_id=382376448]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="OpenPages/Puzzle" unique_id=1637561758]
+[node name="ColorRect2" type="ColorRect" parent="OpenPages/Puzzle" unique_id=2104751786]
 layout_mode = 2
-text = "
-"
+size_flags_vertical = 3
+color = Color(0.0726371, 0.41410127, 0.60880953, 1)
 
 [node name="Main" parent="OpenPages/Puzzle" unique_id=1604054983 instance=ExtResource("2_dqhev")]
 z_index = 2
 
 [node name="BirdInfo" type="VBoxContainer" parent="OpenPages" unique_id=526835642]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect3" type="ColorRect" parent="OpenPages/BirdInfo" unique_id=585542692]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.51231885, 0.34999445, 0.16320765, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="OpenPages/BirdInfo/ColorRect3" unique_id=1131611937]
+propagate_maximum_size = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer" unique_id=413736437]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer" unique_id=549193772]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LabelNomePopular" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=396241306]
+custom_maximum_size = Vector2(750, -1)
+layout_mode = 2
+text = "Nome Popular**"
+label_settings = SubResource("LabelSettings_mc5lh")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1743156019]
+layout_mode = 2
+columns = 2
+
+[node name="LabelNomeCientificoChave" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=623377257]
+layout_mode = 2
+text = "Nome científico:"
+
+[node name="LabelNomeCientificoValor" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1309438738]
+layout_mode = 2
+text = "PlaceHOlder nome"
+
+[node name="LabelInglesChave" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1394083230]
+layout_mode = 2
+text = "Nome em inglês: "
+
+[node name="LabelInglesValor" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=244381567]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Placeholder"
+
+[node name="LabelStatusChave" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=901520910]
+layout_mode = 2
+text = "Estado de conservação:"
+
+[node name="LabelStatusValor" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=454461169]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Placeholder"
+
+[node name="HSeparator" type="HSeparator" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1874167646]
+layout_mode = 2
+
+[node name="LabelDietChave" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1035703611]
+layout_mode = 2
+text = "Alimentação:"
+horizontal_alignment = 1
+
+[node name="LabelDietValor" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=402092492]
+custom_maximum_size = Vector2(750, -1)
+layout_mode = 2
+size_flags_vertical = 5
+text = "PlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholder"
+autowrap_mode = 1
+
+[node name="LabelHabitatChave" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=57312788]
+layout_mode = 2
+text = "Habitat:"
+horizontal_alignment = 1
+
+[node name="LabelHabitatValor" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=36030338]
+custom_maximum_size = Vector2(750, -1)
+layout_mode = 2
+size_flags_vertical = 5
+text = "PlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholder"
+autowrap_mode = 1
+
+[node name="HSeparator2" type="HSeparator" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1338586463]
+layout_mode = 2
+
+[node name="LabelRegioesChave" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1291484336]
+layout_mode = 2
+text = "Distribuição Geográfica Predominante:"
+horizontal_alignment = 1
+
+[node name="HFlowContainerRegioes" type="HFlowContainer" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=870779922]
+layout_mode = 2
+
+[node name="TagNorte" type="CheckBox" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/HFlowContainerRegioes" unique_id=1249405593]
+layout_mode = 2
+text = "Norte"
+
+[node name="TagNordeste" type="CheckBox" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/HFlowContainerRegioes" unique_id=172833173]
+layout_mode = 2
+text = "Nordeste"
+
+[node name="TagCentroOeste" type="CheckBox" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/HFlowContainerRegioes" unique_id=313853440]
+layout_mode = 2
+text = "Centro Oeste"
+
+[node name="TagSudeste" type="CheckBox" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/HFlowContainerRegioes" unique_id=1870948707]
+layout_mode = 2
+text = "Sudeste "
+
+[node name="TagSul" type="CheckBox" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/HFlowContainerRegioes" unique_id=715542288]
+layout_mode = 2
+text = "Sul"
+
+[node name="HSeparator3" type="HSeparator" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1269311357]
+layout_mode = 2
+
+[node name="CuriosidadeChave" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=485500123]
+layout_mode = 2
+text = "Curiosidade:"
+horizontal_alignment = 1
+
+[node name="CuriosidadeValor" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1710749961]
+custom_maximum_size = Vector2(750, -1)
+layout_mode = 2
+size_flags_vertical = 5
+text = "PlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholder"
+autowrap_mode = 1
 
 [node name="Button" type="Button" parent="." unique_id=1115523106]
 layout_mode = 1
