@@ -23,6 +23,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="MainPanel" type="VBoxContainer" parent="Root" unique_id=1151864045]
+visible = false
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -62,6 +63,10 @@ text = "Controles"
 texture_filter = 1
 layout_mode = 2
 text = "Áudio"
+
+[node name="CreditsButton" type="Button" parent="Root/MainPanel" unique_id=123256126]
+layout_mode = 2
+text = "Créditos"
 
 [node name="QuitButton" type="Button" parent="Root/MainPanel" unique_id=1487213879]
 texture_filter = 1
@@ -226,5 +231,20 @@ custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
 [node name="BackButtonAudio" type="Button" parent="Root/AudioPanel" unique_id=2100275726]
+layout_mode = 2
+text = "Voltar"
+
+[node name="CreditsPanel" type="VBoxContainer" parent="Root" unique_id=1894490059]
+visible = false
+layout_mode = 0
+offset_left = 760.0
+offset_top = 345.0
+offset_right = 1160.0
+offset_bottom = 705.0
+
+[node name="CreditsText" type="Label" parent="Root/CreditsPanel" unique_id=2092196463]
+layout_mode = 2
+
+[node name="BackButtonCredits" type="Button" parent="Root/CreditsPanel" unique_id=1974387451]
 layout_mode = 2
 text = "Voltar"

@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var main_panel: Control = $Root/MainPanel
 @onready var controls_panel: Control = $Root/ControlsPanel
 @onready var audio_panel: Control = $Root/AudioPanel
+@onready var credits_panel: Control = $Root/CreditsPanel  # Adicione este nó na cena
 
 @onready var resume_button: Button = $Root/MainPanel/ResumeButton
 @onready var master_slider: HSlider = $Root/AudioPanel/MasterRow/MasterSlider
@@ -22,9 +23,11 @@ func _ready() -> void:
 	$Root/MainPanel/MapButton.pressed.connect(_on_map_pressed)
 	$Root/MainPanel/ControlsButton.pressed.connect(_show_panel.bind(controls_panel))
 	$Root/MainPanel/AudioButton.pressed.connect(_show_panel.bind(audio_panel))
+	$Root/MainPanel/CreditsButton.pressed.connect(_show_panel.bind(credits_panel))  # Conecta o botão de créditos
 	$Root/MainPanel/QuitButton.pressed.connect(_on_quit_pressed)
 	$Root/ControlsPanel/BackButtonControls.pressed.connect(_show_panel.bind(main_panel))
 	$Root/AudioPanel/BackButtonAudio.pressed.connect(_show_panel.bind(main_panel))
+	$Root/CreditsPanel/BackButtonCredits.pressed.connect(_show_panel.bind(main_panel))  # Botão voltar dos créditos
 
 	master_slider.min_value = -40
 	master_slider.max_value = 0
@@ -58,7 +61,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 ## B (ou Esc) volta pro painel anterior; se já estiver no MainPanel, fecha o menu
 func _on_back_pressed() -> void:
-	if controls_panel.visible or audio_panel.visible:
+	if credits_panel.visible:
+		_show_panel(main_panel)
+	elif controls_panel.visible or audio_panel.visible:
 		_show_panel(main_panel)
 	else:
 		_close()
@@ -76,6 +81,7 @@ func _show_panel(panel: Control) -> void:
 	main_panel.visible = panel == main_panel
 	controls_panel.visible = panel == controls_panel
 	audio_panel.visible = panel == audio_panel
+	credits_panel.visible = panel == credits_panel
 	_focus_first_control(panel)
 	
 ## Joga o foco pro primeiro botão/slider clicável do painel que acabou de aparecer,
