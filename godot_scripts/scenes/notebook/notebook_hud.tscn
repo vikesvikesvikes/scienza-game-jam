@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://wvn56ks15tnt" path="res://godot_scripts/scenes/notebook/notebook_hud.gd" id="1_rc8du"]
 [ext_resource type="PackedScene" uid="uid://cagcj0uhvkvgn" path="res://godot_scripts/scenes/Puzzles/PuzzleMain.tscn" id="2_dqhev"]
-[ext_resource type="Script" uid="uid://da3h744gsv7h4" path="res://godot_scripts/resources/signal_data.gd" id="2_juij2"]
-[ext_resource type="Resource" uid="uid://cblva5h6e2msk" path="res://godot_scripts/resources/signal/bem-te-vi.tres" id="3_1bwta"]
-[ext_resource type="Resource" uid="uid://dqy0ovf6ylgf0" path="res://godot_scripts/resources/signal/tico-tico-signal.tres" id="4_xddt5"]
+[ext_resource type="Texture2D" uid="uid://vj64is6q01lf" path="res://Images/arrow1.png" id="6_xddt5"]
+[ext_resource type="Texture2D" uid="uid://crn5jknwb4jl6" path="res://Images/arrow.png" id="7_j66rn"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dqhev"]
 
@@ -13,6 +12,7 @@ font_size = 25
 shadow_size = 3
 
 [node name="NotebookHud" type="Control" unique_id=1484437930]
+z_index = 5
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,7 +28,6 @@ grow_vertical = 2
 scale = Vector2(1.1189609, 1.0479113)
 mouse_filter = 1
 script = ExtResource("1_rc8du")
-debug_birds_to_inject = Array[ExtResource("2_juij2")]([ExtResource("3_1bwta"), ExtResource("4_xddt5")])
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=618247907]
 layout_mode = 1
@@ -74,7 +73,7 @@ size = Vector2i(800, 800)
 render_target_update_mode = 4
 
 [node name="PuzzleMain" parent="OpenPages/PuzzlePage/SubViewportContainer/SubViewport" unique_id=1604054983 instance=ExtResource("2_dqhev")]
-z_index = 2
+z_index = 6
 
 [node name="BirdInfo" type="VBoxContainer" parent="OpenPages" unique_id=526835642]
 layout_mode = 2
@@ -111,7 +110,7 @@ theme_override_constants/separation = 15
 [node name="LabelNomePopular" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=396241306]
 custom_maximum_size = Vector2(750, -1)
 layout_mode = 2
-text = "Nome Popular**"
+text = "?????"
 label_settings = SubResource("LabelSettings_mc5lh")
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -126,7 +125,7 @@ text = "Nome científico:"
 
 [node name="LabelNomeCientificoValor" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1309438738]
 layout_mode = 2
-text = "PlaceHOlder nome"
+text = "?????"
 
 [node name="LabelInglesChave" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1394083230]
 layout_mode = 2
@@ -135,7 +134,7 @@ text = "Nome em inglês: "
 [node name="LabelInglesValor" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=244381567]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Placeholder"
+text = "?????"
 
 [node name="LabelStatusChave" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=901520910]
 layout_mode = 2
@@ -144,7 +143,7 @@ text = "Estado de conservação:"
 [node name="LabelStatusValor" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=454461169]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Placeholder"
+text = "?????"
 
 [node name="HSeparator" type="HSeparator" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1874167646]
 layout_mode = 2
@@ -158,7 +157,7 @@ horizontal_alignment = 1
 custom_maximum_size = Vector2(750, -1)
 layout_mode = 2
 size_flags_vertical = 5
-text = "PlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholder"
+text = "?????"
 autowrap_mode = 1
 
 [node name="LabelHabitatChave" type="Label" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=57312788]
@@ -170,7 +169,7 @@ horizontal_alignment = 1
 custom_maximum_size = Vector2(750, -1)
 layout_mode = 2
 size_flags_vertical = 5
-text = "PlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholder"
+text = "?????"
 autowrap_mode = 1
 
 [node name="HSeparator2" type="HSeparator" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1338586463]
@@ -241,7 +240,7 @@ horizontal_alignment = 1
 custom_maximum_size = Vector2(750, -1)
 layout_mode = 2
 size_flags_vertical = 5
-text = "PlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholder"
+text = "?????"
 autowrap_mode = 1
 
 [node name="BtnAnterior" type="Button" parent="." unique_id=1115523106]
@@ -252,6 +251,7 @@ anchor_bottom = 1.0
 offset_top = -50.0
 offset_right = 50.0
 grow_vertical = 0
+icon = ExtResource("6_xddt5")
 
 [node name="BtnProximo" type="Button" parent="." unique_id=1457554936]
 layout_mode = 1
@@ -264,3 +264,4 @@ offset_left = -50.0
 offset_top = -50.0
 grow_horizontal = 0
 grow_vertical = 0
+icon = ExtResource("7_j66rn")
