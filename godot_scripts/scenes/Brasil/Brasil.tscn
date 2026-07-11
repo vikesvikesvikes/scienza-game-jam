@@ -8,6 +8,8 @@
 [node name="Mapa" type="Node2D" unique_id=191315383]
 
 [node name="CharacterBody2D" parent="." unique_id=703065713 instance=ExtResource("1_othvi")]
+position = Vector2(1642, 1949)
+scale = Vector2(1.5, 1.5)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1283783490]
 stream = ExtResource("2_b8wa3")
@@ -16,13 +18,10 @@ parameters/looping = true
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=923656455]
 z_index = -100
-offset_left = -1148.0
-offset_top = -1346.0
-offset_right = 1852.0
-offset_bottom = 1654.0
-scale = Vector2(0.7, 0.7)
+offset_right = 3000.0
+offset_bottom = 3000.0
 texture = ExtResource("3_aykqu")
 
 [node name="Portal" parent="." unique_id=1600343249 instance=ExtResource("5_aykqu")]
-position = Vector2(144, 22)
+position = Vector2(1845, 1962)
 cena_destino_path = "uid://bcuigsa3bow2l"
