@@ -235,15 +235,49 @@ layout_mode = 2
 text = "Voltar"
 
 [node name="CreditsPanel" type="VBoxContainer" parent="Root" unique_id=1894490059]
-visible = false
-layout_mode = 0
-offset_left = 760.0
-offset_top = 345.0
-offset_right = 1160.0
-offset_bottom = 705.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = -328.0
+offset_right = 277.0
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CreditsText" type="Label" parent="Root/CreditsPanel" unique_id=2092196463]
 layout_mode = 2
+text = "Game design and programming
+Richard Cabral Oliveira
+Kelvin Neres
+Victoria Aparecida de Oliveira Pereira
+
+Artes
+Mariana dos Santos Sales
+
+Revisor científico
+Verônica dos Santos Sales
+
+Áudios
+Xeno-canto Foundation 
+Freesound
+
+Game assets
+itch.io
+
+Referências
+Build a Puzzle Game in Godot 4| The Wizard Coder
+Godot 4: Spectrum Analyzer shader tutorial (real-time, fully explained)| 
+FencerDevLog
+
+*Esse jogo utilizou IA para criar referências visuais para as artes
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackButtonCredits" type="Button" parent="Root/CreditsPanel" unique_id=1974387451]
 layout_mode = 2

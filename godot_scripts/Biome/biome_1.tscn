@@ -50,6 +50,14 @@ tile_set = ExtResource("1_vn4qf")
 y_sort_enabled = true
 position = Vector2(661, 3052)
 
+[node name="SweetSpot" parent="." unique_id=320517776 instance=ExtResource("8_rbq33")]
+z_index = 100
+position = Vector2(787, 1991)
+linked_emitter = NodePath("../RadioEmitter")
+
+[node name="BirdHint" parent="SweetSpot" unique_id=111305096 instance=ExtResource("9_d73et")]
+z_index = 100
+
 [node name="HUD" type="CanvasLayer" parent="." unique_id=833794037]
 
 [node name="RepertoireMinigame" parent="HUD" unique_id=656648358 instance=ExtResource("3_hhgs3")]
@@ -77,9 +85,3 @@ position = Vector2(521, 290)
 [node name="RadioEmitter" parent="." unique_id=1761621902 instance=ExtResource("6_c4feu")]
 position = Vector2(787, 1991)
 signal_data = ExtResource("7_3qqkh")
-
-[node name="SweetSpot" parent="." unique_id=320517776 instance=ExtResource("8_rbq33")]
-position = Vector2(787, 1991)
-linked_emitter = NodePath("../RadioEmitter")
-
-[node name="BirdHint" parent="SweetSpot" unique_id=111305096 instance=ExtResource("9_d73et")]
