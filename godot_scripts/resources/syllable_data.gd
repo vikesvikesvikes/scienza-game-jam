@@ -24,7 +24,7 @@ enum Pitch {
 # ── NOVAS VARIÁVEIS PARA O SISTEMA DE PROGRESSÃO ─────────────────────────────
 
 ## Em qual encontro (1, 2 ou 3) essa sílaba se torna disponível para estudo?
-@export_range(1, 3) var required_encounter: int = 1
+@export_range(0, 3) var required_encounter: int = 0
 
 ## Estado interno que diz se ela já foi desbloqueada pelo especialista
 var is_unlocked: bool = false

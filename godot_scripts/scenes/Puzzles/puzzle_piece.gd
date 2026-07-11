@@ -15,25 +15,24 @@ func init_piece(_index: int, texture: ImageTexture, pos: Vector2, piece_size: Ve
 	position = pos
 	collishape.shape.set("size", piece_size)
 
-# 🌟 Move a peça frame a frame se ela estiver sendo arrastada
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if dragging:
 		global_position = get_global_mouse_position() + drag_offset
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if PuzzleGlobal.is_dragging and dragging == false:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if PuzzleGlobal.is_dragging and not dragging:
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
 			if cell_index != -1:
 				var cell = PuzzleGlobal.find_cell(cell_index)
-				cell.unoccupy()
+				if cell:
+					cell.unoccupy()
 				cell_index = -1
 			dragging = true
 			PuzzleGlobal.is_dragging = true
 			z_index = 100
 			drag_offset = global_position - get_global_mouse_position()
-			# Diz para a Godot que esse clique foi tratado por essa peça
 			get_viewport().set_input_as_handled() 
 
 func drop_piece():

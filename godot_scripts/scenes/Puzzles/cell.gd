@@ -6,14 +6,18 @@ var occupied = false
 @onready var sprite2d: Sprite2D = $Sprite2D
 @onready var collishape: CollisionShape2D = $CollisionShape2D
 
-func init_cell(_index: int, piece_size:Vector2):
+func init_cell(_index: int, piece_size: Vector2):
 	index = _index
-	# define o tamanho da cell com base no tamanho da peça.
-	sprite2d.texture.set("width",piece_size.x)
-	sprite2d.scale = Vector2(1, piece_size.y)
 	
-	#autaliza o collider
-	collishape.shape.set("size",piece_size)
+	# Obtém o tamanho nativo em pixels da imagem usada como célula
+	var texture_size = sprite2d.texture.get_size()
+	
+	# Define a escala dividindo o tamanho alvo pelo tamanho real da textura
+	sprite2d.scale = Vector2(piece_size.x / texture_size.x, piece_size.y / texture_size.y)
+	
+	# Atualiza o collider (o CollisionShape2D aceita o tamanho bruto perfeitamente)
+	if collishape and collishape.shape:
+		collishape.shape.size = piece_size
 
 func is_free():
 	return not occupied

@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://wvn56ks15tnt" path="res://godot_scripts/scenes/notebook/notebook_hud.gd" id="1_rc8du"]
 [ext_resource type="PackedScene" uid="uid://cagcj0uhvkvgn" path="res://godot_scripts/scenes/Puzzles/PuzzleMain.tscn" id="2_dqhev"]
+[ext_resource type="Script" uid="uid://da3h744gsv7h4" path="res://godot_scripts/resources/signal_data.gd" id="2_juij2"]
+[ext_resource type="Resource" uid="uid://cblva5h6e2msk" path="res://godot_scripts/resources/signal/bem-te-vi.tres" id="3_1bwta"]
+[ext_resource type="Resource" uid="uid://dqy0ovf6ylgf0" path="res://godot_scripts/resources/signal/tico-tico-signal.tres" id="4_xddt5"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dqhev"]
 
@@ -16,15 +19,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -800.0
-offset_top = -460.0
-offset_right = 800.0
-offset_bottom = 460.0
+offset_left = -894.0
+offset_top = -479.0
+offset_right = 706.0
+offset_bottom = 441.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.8997866, 0.83749485)
+scale = Vector2(1.1189609, 1.0479113)
 mouse_filter = 1
 script = ExtResource("1_rc8du")
+debug_birds_to_inject = Array[ExtResource("2_juij2")]([ExtResource("3_1bwta"), ExtResource("4_xddt5")])
+run_in_debug_mode = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=618247907]
 layout_mode = 1
@@ -33,7 +38,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.38928655, 0.38928664, 0.38928658, 1)
+mouse_filter = 1
+color = Color(0.9386041, 0.95579845, 0.85788864, 1)
 
 [node name="OpenPages" type="HBoxContainer" parent="." unique_id=380533998]
 material = SubResource("CanvasItemMaterial_dqhev")
@@ -44,16 +50,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Puzzle" type="VBoxContainer" parent="OpenPages" unique_id=382376448]
+[node name="PuzzlePage" type="Panel" parent="OpenPages" unique_id=1292597577]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 
-[node name="ColorRect2" type="ColorRect" parent="OpenPages/Puzzle" unique_id=2104751786]
-layout_mode = 2
-size_flags_vertical = 3
-color = Color(0.0726371, 0.41410127, 0.60880953, 1)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="OpenPages/PuzzlePage" unique_id=1321421981]
+propagate_maximum_size = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.681062
+offset_top = 50.576805
+offset_right = -0.6810913
+offset_bottom = -69.42322
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Main" parent="OpenPages/Puzzle" unique_id=1604054983 instance=ExtResource("2_dqhev")]
+[node name="SubViewport" type="SubViewport" parent="OpenPages/PuzzlePage/SubViewportContainer" unique_id=721360149]
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(800, 800)
+render_target_update_mode = 4
+
+[node name="PuzzleMain" parent="OpenPages/PuzzlePage/SubViewportContainer/SubViewport" unique_id=1604054983 instance=ExtResource("2_dqhev")]
 z_index = 2
 
 [node name="BirdInfo" type="VBoxContainer" parent="OpenPages" unique_id=526835642]
@@ -63,6 +84,7 @@ size_flags_horizontal = 3
 [node name="ColorRect3" type="ColorRect" parent="OpenPages/BirdInfo" unique_id=585542692]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 color = Color(0.51231885, 0.34999445, 0.16320765, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="OpenPages/BirdInfo/ColorRect3" unique_id=1131611937]
@@ -198,7 +220,7 @@ size_flags_vertical = 5
 text = "PlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholder"
 autowrap_mode = 1
 
-[node name="Button" type="Button" parent="." unique_id=1115523106]
+[node name="BtnAnterior" type="Button" parent="." unique_id=1115523106]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -207,7 +229,7 @@ offset_top = -50.0
 offset_right = 50.0
 grow_vertical = 0
 
-[node name="Button2" type="Button" parent="." unique_id=1457554936]
+[node name="BtnProximo" type="Button" parent="." unique_id=1457554936]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
