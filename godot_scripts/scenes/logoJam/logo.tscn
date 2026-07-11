@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c1vmwwe5r7luy"]
+
+[ext_resource type="Texture2D" uid="uid://cslbr1xwutvsx" path="res://Images/logo/Logo Scienza PNG.png" id="1_7yjlh"]
+[ext_resource type="Script" uid="uid://dgl1c4q0qb1i5" path="res://godot_scripts/scenes/logoJam/logo.gd" id="1_sekqo"]
+[ext_resource type="AudioStream" uid="uid://batlx0xpx1on6" path="res://Images/logo/SL Chill Beat Harp F 80 BPM 006.wav" id="2_30qhy"]
+
+[node name="Logo" type="Node2D" unique_id=451710192]
+script = ExtResource("1_sekqo")
+cena_destino_path = "uid://ce6b2pfo71fmi"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=361966860]
+offset_left = 357.0
+offset_top = 202.0
+offset_right = 1222.0
+offset_bottom = 721.0
+scale = Vector2(1.2819935, 1.225698)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_7yjlh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=850974050]
+stream = ExtResource("2_30qhy")
+autoplay = true

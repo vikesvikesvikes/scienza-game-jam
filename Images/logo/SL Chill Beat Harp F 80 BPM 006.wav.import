@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://batlx0xpx1on6"
+path="res://.godot/imported/SL Chill Beat Harp F 80 BPM 006.wav-1e1dea08824aca24af38d4ed5f18ed66.sample"
+
+[deps]
+
+source_file="res://Images/logo/SL Chill Beat Harp F 80 BPM 006.wav"
+dest_files=["res://.godot/imported/SL Chill Beat Harp F 80 BPM 006.wav-1e1dea08824aca24af38d4ed5f18ed66.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
