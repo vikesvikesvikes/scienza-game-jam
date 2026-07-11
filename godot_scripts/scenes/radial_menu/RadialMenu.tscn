@@ -25,7 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.4, 0.9, 0.8, 1)
+color = Color(1, 0, 0, 1)
 
 [node name="Label" type="Label" parent="Slot_A" unique_id=68558523]
 layout_mode = 0
@@ -48,7 +48,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.5, 1, 0.5, 1)
+color = Color(0, 1, 0, 1)
 
 [node name="Label" type="Label" parent="Slot_X" unique_id=496088753]
 layout_mode = 0
@@ -71,7 +71,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.75, 0.2, 1)
+color = Color(0, 0, 1, 1)
 
 [node name="Label" type="Label" parent="Slot_Y" unique_id=1040538321]
 layout_mode = 0

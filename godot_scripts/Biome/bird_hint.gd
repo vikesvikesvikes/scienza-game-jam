@@ -12,10 +12,10 @@ class_name BirdHint
 @export var pause_between_loops: float = 2.0
 
 ## Mesmas cores usadas na radial (A / X / Y)
-const SLOT_COLORS: Array[Color] = [
-	Color(0.4, 0.9, 0.8),   # A — Grave
-	Color(0.5, 1.0, 0.5),   # X — Neutro
-	Color(1.0, 0.75, 0.2),  # Y — Agudo
+const SLOT_COLORS = [
+	Color.RED,
+	Color.GREEN,
+	Color.BLUE,
 ]
 const COLOR_OFF := Color(0.2, 0.2, 0.2)
 

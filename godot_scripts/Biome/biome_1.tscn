@@ -83,4 +83,3 @@ position = Vector2(787, 1991)
 linked_emitter = NodePath("../RadioEmitter")
 
 [node name="BirdHint" parent="SweetSpot" unique_id=111305096 instance=ExtResource("9_d73et")]
-sequence = Array[int]([0, 0, 1, 2])

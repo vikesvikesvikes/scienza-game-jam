@@ -117,14 +117,11 @@ autoplay = "default"
 frame_progress = 0.28371018
 
 [node name="SpeechBubble" type="Control" parent="." unique_id=370969134]
-custom_minimum_size = Vector2(20.035, 15.585)
-custom_maximum_size = Vector2(12.48, 4.84)
 layout_mode = 3
-anchors_preset = 0
-offset_left = -544.0
-offset_top = -687.0
-offset_right = -118.0
-offset_bottom = -345.0
+offset_left = -6.0
+offset_top = -18.0
+offset_right = -6.0
+offset_bottom = -18.0
 
 [node name="BubbleBg" type="Panel" parent="SpeechBubble" unique_id=163503279]
 layout_mode = 1
@@ -136,17 +133,17 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vfghh")
 
 [node name="ColorSlots" type="HBoxContainer" parent="SpeechBubble" unique_id=1086449447]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = -61.0
+offset_top = -17.0
+offset_right = 83.0
+offset_bottom = 13.0
 theme_override_constants/separation = 8
 
 [node name="ColorSlot1" type="ColorRect" parent="SpeechBubble/ColorSlots" unique_id=742291239]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+size_flags_vertical = 4
 color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="ColorSlot2" type="ColorRect" parent="SpeechBubble/ColorSlots" unique_id=81719256]
