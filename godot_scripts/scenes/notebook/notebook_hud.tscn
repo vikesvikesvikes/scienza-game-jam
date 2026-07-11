@@ -29,7 +29,6 @@ scale = Vector2(1.1189609, 1.0479113)
 mouse_filter = 1
 script = ExtResource("1_rc8du")
 debug_birds_to_inject = Array[ExtResource("2_juij2")]([ExtResource("3_1bwta"), ExtResource("4_xddt5")])
-run_in_debug_mode = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=618247907]
 layout_mode = 1
@@ -187,22 +186,47 @@ layout_mode = 2
 
 [node name="TagNorte" type="CheckBox" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/HFlowContainerRegioes" unique_id=1249405593]
 layout_mode = 2
+mouse_behavior_recursive = 1
+mouse_force_pass_scroll_events = false
+button_mask = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
 text = "Norte"
 
 [node name="TagNordeste" type="CheckBox" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/HFlowContainerRegioes" unique_id=172833173]
 layout_mode = 2
+mouse_behavior_recursive = 1
+mouse_force_pass_scroll_events = false
+button_mask = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
 text = "Nordeste"
 
 [node name="TagCentroOeste" type="CheckBox" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/HFlowContainerRegioes" unique_id=313853440]
 layout_mode = 2
+mouse_behavior_recursive = 1
+mouse_force_pass_scroll_events = false
+button_mask = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
 text = "Centro Oeste"
 
 [node name="TagSudeste" type="CheckBox" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/HFlowContainerRegioes" unique_id=1870948707]
 layout_mode = 2
+mouse_behavior_recursive = 1
+mouse_force_pass_scroll_events = false
+button_mask = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
 text = "Sudeste "
 
 [node name="TagSul" type="CheckBox" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer/HFlowContainerRegioes" unique_id=715542288]
 layout_mode = 2
+mouse_behavior_recursive = 1
+mouse_force_pass_scroll_events = false
+button_mask = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
 text = "Sul"
 
 [node name="HSeparator3" type="HSeparator" parent="OpenPages/BirdInfo/ColorRect3/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1269311357]

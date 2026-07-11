@@ -1,7 +1,7 @@
 extends Node2D
 
 @export_file("*.tscn") var cena_destino_path: String
-@export var delay_seconds: float = 4.5
+var delay_seconds: float = 4.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

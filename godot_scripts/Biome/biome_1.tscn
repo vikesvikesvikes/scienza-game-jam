@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cdt1dlugligxj" path="res://godot_scripts/scenes/analyzer/BirdSonogram.tscn" id="6_5f3aj"]
 [ext_resource type="PackedScene" uid="uid://c5oj5dmak2fl" path="res://godot_scripts/scenes/radio_emitter/RadioEmitter.tscn" id="6_c4feu"]
 [ext_resource type="Resource" uid="uid://cblva5h6e2msk" path="res://godot_scripts/resources/signal/bem-te-vi.tres" id="7_3qqkh"]
+[ext_resource type="PackedScene" uid="uid://qi6osj5b153x" path="res://godot_scripts/scenes/notebook/notebook_hud.tscn" id="7_4a081"]
 [ext_resource type="PackedScene" uid="uid://cdwsx008kqw36" path="res://godot_scripts/scenes/sweet_spot/SweetSpot.tscn" id="8_rbq33"]
 [ext_resource type="PackedScene" uid="uid://ce8rw1nklutli" path="res://godot_scripts/Biome/bird_hint.tscn" id="9_d73et"]
 
@@ -70,6 +71,8 @@ children_offset = Vector2(0.815, -1.275)
 [node name="BirdSonogram" parent="HUD" unique_id=1131237019 instance=ExtResource("6_5f3aj")]
 visible = false
 position = Vector2(521, 290)
+
+[node name="NotebookHud" parent="HUD" unique_id=1484437930 instance=ExtResource("7_4a081")]
 
 [node name="RadioEmitter" parent="." unique_id=1761621902 instance=ExtResource("6_c4feu")]
 position = Vector2(787, 1991)

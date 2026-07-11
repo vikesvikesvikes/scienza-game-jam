@@ -34,7 +34,7 @@ func _ready() -> void:
 	if next_button and not next_button.pressed.is_connected(_on_next_page_pressed):
 		next_button.pressed.connect(_on_next_page_pressed)
 		
-	visible = true 
+	visible = false 
 	_atualizar_paginas_caderno()
 
 func _unhandled_input(event: InputEvent) -> void:
