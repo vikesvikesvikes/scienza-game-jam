@@ -1,0 +1,230 @@
+[gd_scene format=3 uid="uid://bw4q7g31r87co"]
+
+[ext_resource type="Script" uid="uid://blimk7p73eajn" path="res://godot_scripts/scenes/pause_menu/pause_menu.gd" id="1_w2tq8"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1900417860]
+script = ExtResource("1_w2tq8")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=1612059611]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3137255)
+
+[node name="Root" type="Control" parent="." unique_id=1295784104]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MainPanel" type="VBoxContainer" parent="Root" unique_id=1151864045]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -99.0
+offset_right = 200.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="Root/MainPanel" unique_id=2096201615]
+texture_filter = 1
+layout_mode = 2
+text = "Pausado"
+
+[node name="ResumeButton" type="Button" parent="Root/MainPanel" unique_id=730450975]
+texture_filter = 1
+layout_mode = 2
+text = "Continuar"
+
+[node name="MapButton" type="Button" parent="Root/MainPanel" unique_id=502547424]
+texture_filter = 1
+layout_mode = 2
+text = "Eee meu brasilsão (mapa mundo)"
+
+[node name="ControlsButton" type="Button" parent="Root/MainPanel" unique_id=2070745232]
+texture_filter = 1
+layout_mode = 2
+text = "Controles"
+
+[node name="AudioButton" type="Button" parent="Root/MainPanel" unique_id=1152289154]
+texture_filter = 1
+layout_mode = 2
+text = "Áudio"
+
+[node name="QuitButton" type="Button" parent="Root/MainPanel" unique_id=1487213879]
+texture_filter = 1
+layout_mode = 2
+text = "Sair do Jogo"
+
+[node name="ControlsPanel" type="VBoxContainer" parent="Root" unique_id=1182369686]
+visible = false
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -20.0
+offset_right = 200.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="Root/ControlsPanel" unique_id=679408860]
+texture_filter = 1
+layout_mode = 2
+text = "Controles"
+
+[node name="ControlsGrid" type="GridContainer" parent="Root/ControlsPanel" unique_id=1311486364]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 12
+columns = 3
+
+[node name="Label" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=608650449]
+layout_mode = 2
+text = "Ação"
+
+[node name="Label2" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=820455395]
+layout_mode = 2
+text = "Teclado"
+
+[node name="Label3" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=1213981314]
+layout_mode = 2
+text = "Controle"
+
+[node name="Label4" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=808845815]
+layout_mode = 2
+text = "Mover"
+
+[node name="Label5" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=2139996788]
+layout_mode = 2
+text = "WASD / Setas"
+
+[node name="Label6" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=14755558]
+layout_mode = 2
+text = "Direcional / Analógico D."
+
+[node name="Label7" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=1417126768]
+layout_mode = 2
+text = "Interagir"
+
+[node name="Label8" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=1489571884]
+layout_mode = 2
+text = "E"
+
+[node name="Label9" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=647002519]
+layout_mode = 2
+text = "A"
+
+[node name="Label10" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=840737763]
+layout_mode = 2
+text = "Caderno"
+
+[node name="Label11" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=151912107]
+layout_mode = 2
+text = "I"
+
+[node name="Label12" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=1748741241]
+layout_mode = 2
+text = "Select"
+
+[node name="Label13" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=346945069]
+layout_mode = 2
+text = "Menu Radial"
+
+[node name="Label14" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=834108835]
+layout_mode = 2
+text = "Tab (segurar)"
+
+[node name="Label15" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=212514402]
+layout_mode = 2
+text = "LB (segurar)"
+
+[node name="Label16" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=1347043258]
+layout_mode = 2
+text = "Notas A/X/Y"
+
+[node name="Label17" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=252537170]
+layout_mode = 2
+text = "1 / 2 / 3 "
+
+[node name="Label18" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=37386759]
+layout_mode = 2
+text = "A / X / Y"
+
+[node name="Label19" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=770626184]
+layout_mode = 2
+text = "Pausar"
+
+[node name="Label20" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=997926803]
+layout_mode = 2
+text = "Esc"
+
+[node name="Label21" type="Label" parent="Root/ControlsPanel/ControlsGrid" unique_id=674534241]
+layout_mode = 2
+text = "Start"
+
+[node name="BackButtonControls" type="Button" parent="Root/ControlsPanel" unique_id=231099534]
+layout_mode = 2
+text = "Voltar"
+
+[node name="AudioPanel" type="VBoxContainer" parent="Root" unique_id=1631403603]
+visible = false
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -20.0
+offset_right = 200.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="Root/AudioPanel" unique_id=862234078]
+layout_mode = 2
+text = "Áudio"
+
+[node name="MasterRow" type="HBoxContainer" parent="Root/AudioPanel" unique_id=191121962]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/AudioPanel/MasterRow" unique_id=1114527995]
+layout_mode = 2
+text = "Geral"
+
+[node name="MasterSlider" type="HSlider" parent="Root/AudioPanel/MasterRow" unique_id=1792337683]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="RadioRow" type="HBoxContainer" parent="Root/AudioPanel" unique_id=1051275379]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Root/AudioPanel/RadioRow" unique_id=519491664]
+layout_mode = 2
+text = "Rádio"
+
+[node name="RadioSlider" type="HSlider" parent="Root/AudioPanel/RadioRow" unique_id=169995825]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="BackButtonAudio" type="Button" parent="Root/AudioPanel" unique_id=2100275726]
+layout_mode = 2
+text = "Voltar"
