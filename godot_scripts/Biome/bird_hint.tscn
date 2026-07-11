@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://ce8rw1nklutli"]
+
+[ext_resource type="Script" uid="uid://clyuq2c1g1xxm" path="res://godot_scripts/Biome/bird_hint.gd" id="1_u23og"]
+[ext_resource type="Texture2D" uid="uid://batqimg0ncqs0" path="res://godot_scripts/Biome/Pixel Art Bird 16x16/BirdSprite.png" id="2_u23og"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uohau"]
+atlas = ExtResource("2_u23og")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxjh0"]
+atlas = ExtResource("2_u23og")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swr87"]
+atlas = ExtResource("2_u23og")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhbt4"]
+atlas = ExtResource("2_u23og")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krndd"]
+atlas = ExtResource("2_u23og")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imc58"]
+atlas = ExtResource("2_u23og")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwqc8"]
+atlas = ExtResource("2_u23og")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4d5s"]
+atlas = ExtResource("2_u23og")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64nv6"]
+atlas = ExtResource("2_u23og")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfaqg"]
+atlas = ExtResource("2_u23og")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3l42"]
+atlas = ExtResource("2_u23og")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wx5xc"]
+atlas = ExtResource("2_u23og")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekh8d"]
+atlas = ExtResource("2_u23og")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tm3d0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uohau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxjh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swr87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhbt4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krndd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imc58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwqc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4d5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64nv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfaqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3l42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wx5xc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekh8d")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfghh"]
+bg_color = Color(0.05, 0.1, 0.2, 1)
+
+[node name="BirdHint" type="Node2D" unique_id=111305096]
+script = ExtResource("1_u23og")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=400054778]
+texture_filter = 1
+position = Vector2(6.5, 4.0000005)
+scale = Vector2(0.8125, 0.87500006)
+sprite_frames = SubResource("SpriteFrames_tm3d0")
+autoplay = "default"
+frame_progress = 0.28371018
+
+[node name="SpeechBubble" type="Control" parent="." unique_id=370969134]
+custom_minimum_size = Vector2(20.035, 15.585)
+custom_maximum_size = Vector2(12.48, 4.84)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -544.0
+offset_top = -687.0
+offset_right = -118.0
+offset_bottom = -345.0
+
+[node name="BubbleBg" type="Panel" parent="SpeechBubble" unique_id=163503279]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vfghh")
+
+[node name="ColorSlots" type="HBoxContainer" parent="SpeechBubble" unique_id=1086449447]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="ColorSlot1" type="ColorRect" parent="SpeechBubble/ColorSlots" unique_id=742291239]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="ColorSlot2" type="ColorRect" parent="SpeechBubble/ColorSlots" unique_id=81719256]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="ColorSlot3" type="ColorRect" parent="SpeechBubble/ColorSlots" unique_id=1327065683]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="ColorSlot4" type="ColorRect" parent="SpeechBubble/ColorSlots" unique_id=1488477713]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+color = Color(0.2, 0.2, 0.2, 1)

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://deoa3gb1xlx54"]
+
+[ext_resource type="Script" uid="uid://c4x0np2q7ul41" path="res://addons/advanced_radial_menu/radial_menu_class.gd" id="1_ta58x"]
+
+[node name="RadialMenu" type="Control" unique_id=378127734]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ta58x")
+enabled = false
+mouse_enabled = false
+metadata/_custom_type_script = "uid://c4x0np2q7ul41"
+
+[node name="Slot_A" type="Control" parent="." unique_id=1027657458]
+anchors_preset = 0
+offset_left = 9.0
+offset_top = -22.0
+offset_right = 265.0
+offset_bottom = 234.0
+pivot_offset = Vector2(128, 128)
+
+[node name="ColorRect" type="ColorRect" parent="Slot_A" unique_id=1777536962]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4, 0.9, 0.8, 1)
+
+[node name="Label" type="Label" parent="Slot_A" unique_id=68558523]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "A"
+
+[node name="Slot_X" type="Control" parent="." unique_id=1691099487]
+anchors_preset = 0
+offset_left = -6.0
+offset_top = 6.0
+offset_right = 250.0
+offset_bottom = 262.0
+pivot_offset = Vector2(128, 128)
+
+[node name="ColorRect" type="ColorRect" parent="Slot_X" unique_id=1239390256]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5, 1, 0.5, 1)
+
+[node name="Label" type="Label" parent="Slot_X" unique_id=496088753]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "X"
+
+[node name="Slot_Y" type="Control" parent="." unique_id=1034290175]
+anchors_preset = 0
+offset_left = -20.0
+offset_top = -21.0
+offset_right = 236.0
+offset_bottom = 235.0
+pivot_offset = Vector2(128, 128)
+
+[node name="ColorRect" type="ColorRect" parent="Slot_Y" unique_id=773124006]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.75, 0.2, 1)
+
+[node name="Label" type="Label" parent="Slot_Y" unique_id=1040538321]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Y"

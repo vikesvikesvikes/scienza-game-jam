@@ -6641,6 +6641,7 @@ texture_region_size = Vector2i(32, 32)
 1:9/animation_frame_4/duration = 1.0
 1:9/animation_frame_5/duration = 1.0
 1:9/0 = 0
+1:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 8:9/animation_columns = 6
 8:9/animation_speed = 6.0
 8:9/animation_frame_0/duration = 1.0
@@ -6695,6 +6696,7 @@ texture_region_size = Vector2i(32, 32)
 1:11/animation_frame_4/duration = 1.0
 1:11/animation_frame_5/duration = 1.0
 1:11/0 = 0
+1:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 8:11/animation_columns = 6
 8:11/animation_speed = 6.0
 8:11/animation_frame_0/duration = 1.0
@@ -7077,6 +7079,7 @@ texture_region_size = Vector2i(32, 32)
 1:10/animation_frame_4/duration = 1.0
 1:10/animation_frame_5/duration = 1.0
 1:10/0 = 0
+1:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [resource]
 tile_size = Vector2i(32, 32)

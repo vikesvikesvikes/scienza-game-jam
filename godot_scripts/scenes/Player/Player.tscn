@@ -757,8 +757,9 @@ animations = [{
 script = ExtResource("1_swcsf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=999309341]
+position = Vector2(0, -2.615)
 rotation = -1.5702491
-scale = Vector2(5, 5)
+scale = Vector2(4.955, 4.955)
 shape = SubResource("CapsuleShape2D_oejqm")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1270557901]

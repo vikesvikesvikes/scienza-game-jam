@@ -120,6 +120,12 @@ func _on_frequency_pressed(freq_index: int) -> void:
 			var slot = syllable_slots.get_child(_current_syllable_index)
 			_flash_node(slot, Color.RED)
 
+## API pública para entradas vindas de outras fontes (ex: Radial Menu do controle)
+func receive_radial_input(freq_index: int) -> void:
+	if not _is_active:
+		return
+	_on_frequency_pressed(freq_index)
+
 func _advance_syllable() -> void:
 	_current_note_index = 0
 	_current_syllable_index += 1
