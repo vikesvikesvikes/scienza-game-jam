@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://7c1e48ad3aev" path="res://godot_scripts/scenes/repertoire_minigame/repertoire_minigame.gd" id="6_5f3aj"]
 [ext_resource type="PackedScene" uid="uid://c5oj5dmak2fl" path="res://godot_scripts/scenes/radio_emitter/RadioEmitter.tscn" id="6_c4feu"]
 [ext_resource type="PackedScene" uid="uid://qi6osj5b153x" path="res://godot_scripts/scenes/notebook/notebook_hud.tscn" id="7_4a081"]
+[ext_resource type="PackedScene" uid="uid://c8k2p0mrq5x0y" path="res://godot_scripts/scenes/feedback_message/feedback_message.tscn" id="7_yebjw"]
 [ext_resource type="PackedScene" uid="uid://cdwsx008kqw36" path="res://godot_scripts/scenes/sweet_spot/SweetSpot.tscn" id="8_rbq33"]
 [ext_resource type="Resource" uid="uid://dthel6ckmcyd3" path="res://godot_scripts/resources/signal/sabia_signal.tres" id="9_4a081"]
 [ext_resource type="PackedScene" uid="uid://ce8rw1nklutli" path="res://godot_scripts/Biome/bird_hint.tscn" id="9_d73et"]
@@ -53,10 +54,10 @@ position = Vector2(661, 3052)
 
 [node name="RadialMenu" parent="HUD" unique_id=378127734 instance=ExtResource("4_hhgs3")]
 anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 auto_sizing = false
 circle_radius = 130
 children_size = 110
@@ -66,10 +67,13 @@ children_offset = Vector2(0.815, -1.275)
 
 [node name="NotebookHud" parent="HUD" unique_id=1484437930 instance=ExtResource("7_4a081")]
 
-[node name="RepertoireMinigame" type="Control" parent="HUD" unique_id=1172513960]
+[node name="RepertoireMinigame" type="Control" parent="HUD" unique_id=1172513960 node_paths=PackedStringArray("feedback_ui")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("6_5f3aj")
+feedback_ui = NodePath("../FeedbackMessage")
+
+[node name="FeedbackMessage" parent="HUD" unique_id=1846500124 instance=ExtResource("7_yebjw")]
 
 [node name="RadioEmitter" parent="." unique_id=1761621902 instance=ExtResource("6_c4feu")]
 position = Vector2(787, 1991)

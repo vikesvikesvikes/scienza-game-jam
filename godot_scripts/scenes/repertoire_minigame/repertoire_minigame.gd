@@ -1,6 +1,6 @@
 class_name RepertoireMinigame
 extends Node
-
+@export var feedback_ui: FeedbackMessage
 # Sinais de comunicação de estado com o ecossistema do jogo
 signal minigame_completed(signal_data: SignalData)
 signal minigame_cancelled
@@ -31,12 +31,7 @@ func open(signal_data: SignalData) -> void:
 	_current_syllable_index = 0
 	_current_note_index = 0
 	_is_active = true
-	_pending_syllables = []
-	for s in _current_signal.syllables:
-		if s.is_unlocked:
-			_pending_syllables.append(s)
-			
-	_current_note_index = 0
+	
 	set_process_unhandled_key_input(true)
 
 ## Reseta o estado lógico do jogo e desativa processamento
@@ -94,10 +89,14 @@ func _on_frequency_pressed(freq_index: int) -> void:
 	else:
 		print("[Repertoire] Nota ERRADA! Resetando progresso desta sílaba.")
 		_current_note_index = 0
+		if feedback_ui:
+			feedback_ui.show_wrong_sequence()
 
 ## Controla os índices de avanço do minigame e travas de áudio corrompido
 func _advance_syllable() -> void:
 	print("[Repertoire] Sílaba finalizada com sucesso! Avançando...")
+	if feedback_ui:
+		feedback_ui.show_correct_sequence()
 	_current_note_index = 0
 	_current_syllable_index += 1
 	
