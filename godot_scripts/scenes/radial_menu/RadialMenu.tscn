@@ -2,9 +2,33 @@
 
 [ext_resource type="Script" uid="uid://c4x0np2q7ul41" path="res://addons/advanced_radial_menu/radial_menu_class.gd" id="1_ta58x"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x"]
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y"]
+bg_color = Color(0, 0, 1, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+
 [node name="RadialMenu" type="Control" unique_id=378127734]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ta58x")
 enabled = false
 mouse_enabled = false
@@ -14,23 +38,31 @@ metadata/_custom_type_script = "uid://c4x0np2q7ul41"
 anchors_preset = 0
 offset_left = 9.0
 offset_top = -22.0
-offset_right = 265.0
+offset_right = 39.0
 offset_bottom = 234.0
 pivot_offset = Vector2(128, 128)
 
-[node name="ColorRect" type="ColorRect" parent="Slot_A" unique_id=1777536962]
+[node name="Circle" type="Panel" parent="Slot_A" unique_id=1777536962]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0, 0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_a")
 
 [node name="Label" type="Label" parent="Slot_A" unique_id=68558523]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 37.0
+offset_top = 32.0
+offset_right = 77.0
+offset_bottom = 55.0
 text = "A"
 
 [node name="Slot_X" type="Control" parent="." unique_id=1691099487]
@@ -41,19 +73,27 @@ offset_right = 250.0
 offset_bottom = 262.0
 pivot_offset = Vector2(128, 128)
 
-[node name="ColorRect" type="ColorRect" parent="Slot_X" unique_id=1239390256]
+[node name="Circle" type="Panel" parent="Slot_X" unique_id=1239390256]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 1, 0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_x")
 
 [node name="Label" type="Label" parent="Slot_X" unique_id=496088753]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 38.0
+offset_top = 33.0
+offset_right = 78.0
+offset_bottom = 56.0
 text = "X"
 
 [node name="Slot_Y" type="Control" parent="." unique_id=1034290175]
@@ -64,17 +104,25 @@ offset_right = 236.0
 offset_bottom = 235.0
 pivot_offset = Vector2(128, 128)
 
-[node name="ColorRect" type="ColorRect" parent="Slot_Y" unique_id=773124006]
+[node name="Circle" type="Panel" parent="Slot_Y" unique_id=773124006]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 1, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_y")
 
 [node name="Label" type="Label" parent="Slot_Y" unique_id=1040538321]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 37.0
+offset_top = 33.0
+offset_right = 77.0
+offset_bottom = 56.0
 text = "Y"
