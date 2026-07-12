@@ -15,18 +15,6 @@ var current_bird_index: int = 0
 
 func _ready() -> void:
 	
-	# Se a opção estiver ativa ou se estivermos rodando a cena isoladamente (sem fluxo do GameManager externo)
-	if run_in_debug_mode and not debug_birds_to_inject.is_empty():
-		print("[NotebookDebug] Injetando aves de teste para validação de layout.")
-		for test_bird in debug_birds_to_inject:
-			# Força o aprendizado fictício e simula captações no GameManager
-			if not SignalBook.check_signal(test_bird.signal_id):
-				SignalBook.learned_signals.append(test_bird)
-				# Garante que as sílabas simulem o estado totalmente desbloqueado de 3 encontros
-				SignalBook.unlock_syllables_for_encounter(test_bird, 3)
-				# Define que encontramos a ave 3 vezes para liberar o puzzle e a interface
-				GameManager.bird_encounter_counts[test_bird.signal_id] = 3
-	
 	var prev_button = get_node_or_null("BtnAnterior") 
 	var next_button = get_node_or_null("BtnProximo")
 	

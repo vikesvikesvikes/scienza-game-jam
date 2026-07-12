@@ -7,10 +7,13 @@
 [ext_resource type="Script" uid="uid://7c1e48ad3aev" path="res://godot_scripts/scenes/repertoire_minigame/repertoire_minigame.gd" id="6_5f3aj"]
 [ext_resource type="PackedScene" uid="uid://c5oj5dmak2fl" path="res://godot_scripts/scenes/radio_emitter/RadioEmitter.tscn" id="6_c4feu"]
 [ext_resource type="PackedScene" uid="uid://qi6osj5b153x" path="res://godot_scripts/scenes/notebook/notebook_hud.tscn" id="7_4a081"]
+[ext_resource type="Resource" uid="uid://dqy0ovf6ylgf0" path="res://godot_scripts/resources/signal/tico-tico-signal.tres" id="7_r4v0i"]
 [ext_resource type="PackedScene" uid="uid://c8k2p0mrq5x0y" path="res://godot_scripts/scenes/feedback_message/feedback_message.tscn" id="7_yebjw"]
 [ext_resource type="PackedScene" uid="uid://cdwsx008kqw36" path="res://godot_scripts/scenes/sweet_spot/SweetSpot.tscn" id="8_rbq33"]
 [ext_resource type="Resource" uid="uid://dthel6ckmcyd3" path="res://godot_scripts/resources/signal/sabia_signal.tres" id="9_4a081"]
 [ext_resource type="PackedScene" uid="uid://ce8rw1nklutli" path="res://godot_scripts/Biome/bird_hint.tscn" id="9_d73et"]
+[ext_resource type="Script" uid="uid://da3h744gsv7h4" path="res://godot_scripts/resources/signal_data.gd" id="10_f5eoy"]
+[ext_resource type="PackedScene" uid="uid://bp523dytop5xb" path="res://godot_scripts/Biome/bird_hintv2.tscn" id="14_f5eoy"]
 
 [node name="Biome 1" type="Node2D" unique_id=1100493449]
 script = ExtResource("1_m57mw")
@@ -51,6 +54,7 @@ y_sort_enabled = true
 position = Vector2(661, 3052)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=833794037]
+visible = false
 
 [node name="RadialMenu" parent="HUD" unique_id=378127734 instance=ExtResource("4_hhgs3")]
 anchors_preset = 15
@@ -66,6 +70,7 @@ children_distance_offset = -0.01
 children_offset = Vector2(0.815, -1.275)
 
 [node name="NotebookHud" parent="HUD" unique_id=1484437930 instance=ExtResource("7_4a081")]
+debug_birds_to_inject = Array[ExtResource("10_f5eoy")]([ExtResource("7_r4v0i"), ExtResource("9_4a081")])
 
 [node name="RepertoireMinigame" type="Control" parent="HUD" unique_id=1172513960 node_paths=PackedStringArray("feedback_ui")]
 layout_mode = 3
@@ -76,21 +81,21 @@ feedback_ui = NodePath("../FeedbackMessage")
 [node name="FeedbackMessage" parent="HUD" unique_id=1846500124 instance=ExtResource("7_yebjw")]
 
 [node name="RadioEmitter" parent="." unique_id=1761621902 instance=ExtResource("6_c4feu")]
-position = Vector2(787, 1991)
+position = Vector2(1459, 556)
 signal_data = ExtResource("9_4a081")
 
 [node name="SweetSpot" parent="." unique_id=320517776 instance=ExtResource("8_rbq33")]
-position = Vector2(787, 1991)
+position = Vector2(1459, 556)
 linked_emitter = NodePath("../RadioEmitter")
 
 [node name="BirdHint" parent="SweetSpot" unique_id=111305096 instance=ExtResource("9_d73et")]
 
 [node name="RadioEmitter2" parent="." unique_id=1425482870 instance=ExtResource("6_c4feu")]
-position = Vector2(1128, 2578)
+position = Vector2(2081, 1330)
 signal_data = ExtResource("9_4a081")
 
 [node name="SweetSpot2" parent="." unique_id=1359344872 instance=ExtResource("8_rbq33")]
-position = Vector2(1128, 2578)
+position = Vector2(2081, 1330)
 linked_emitter = NodePath("../RadioEmitter2")
 
 [node name="BirdHint" parent="SweetSpot2" unique_id=2003308200 instance=ExtResource("9_d73et")]
@@ -98,12 +103,44 @@ position = Vector2(1, 0)
 target_syllable_index = 1
 
 [node name="RadioEmitter3" parent="." unique_id=538993915 instance=ExtResource("6_c4feu")]
-position = Vector2(686, 3045)
+position = Vector2(527, 2378)
 signal_data = ExtResource("9_4a081")
 
 [node name="SweetSpot3" parent="." unique_id=1900364800 instance=ExtResource("8_rbq33")]
-position = Vector2(686, 3045)
+position = Vector2(527, 2378)
 linked_emitter = NodePath("../RadioEmitter3")
 
 [node name="BirdHint" parent="SweetSpot3" unique_id=1625807808 instance=ExtResource("9_d73et")]
 target_syllable_index = 2
+
+[node name="RadioEmitter4" parent="." unique_id=492403439 instance=ExtResource("6_c4feu")]
+position = Vector2(751, 1609)
+signal_data = ExtResource("7_r4v0i")
+
+[node name="SweetSpot4" parent="." unique_id=728885504 instance=ExtResource("8_rbq33")]
+position = Vector2(751, 1609)
+linked_emitter = NodePath("../RadioEmitter4")
+
+[node name="BirdHint2" parent="SweetSpot4" unique_id=1551270692 instance=ExtResource("14_f5eoy")]
+target_syllable_index = 2
+
+[node name="RadioEmitter5" parent="." unique_id=1283641549 instance=ExtResource("6_c4feu")]
+position = Vector2(1002, 2860)
+signal_data = ExtResource("7_r4v0i")
+
+[node name="SweetSpot5" parent="." unique_id=2096498968 instance=ExtResource("8_rbq33")]
+position = Vector2(1002, 2860)
+linked_emitter = NodePath("../RadioEmitter5")
+
+[node name="BirdHint2" parent="SweetSpot5" unique_id=1941162063 instance=ExtResource("14_f5eoy")]
+target_syllable_index = 1
+
+[node name="RadioEmitter6" parent="." unique_id=991535444 instance=ExtResource("6_c4feu")]
+position = Vector2(467, 583)
+signal_data = ExtResource("7_r4v0i")
+
+[node name="SweetSpot6" parent="." unique_id=1074808956 instance=ExtResource("8_rbq33")]
+position = Vector2(467, 583)
+linked_emitter = NodePath("../RadioEmitter6")
+
+[node name="BirdHint2" parent="SweetSpot6" unique_id=765484267 instance=ExtResource("14_f5eoy")]
