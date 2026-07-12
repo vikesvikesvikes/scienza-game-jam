@@ -28,12 +28,19 @@ func _on_radial_menu_slot_selected(slot: Control, index: int) -> void:
 	# index 0 = Grave, 1 = Neutro, 2 = Agudo (Garanta que a ordem dos filhos no RadialMenu bata com isso)
 	$HUD/RepertoireMinigame.receive_radial_input(index)
 	
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	# 1. GERENCIAMENTO DO MENU RADIAL (Segurar TAB)
 	if event.is_action_pressed(&"radial_open"):
-		if minigame.visible: # Só permite abrir se o minijogo de estudo estiver ativo
+		# Inicia o minigame caso o player esteja na área do pássaro e ele ainda não estiver ativo
+		if radio_atual != null:
+			if not minigame._is_active:
+				print("[Biome1] Iniciando estudo via Menu Radial.")
+				_abrir_estudo_da_ave(radio_atual)
+			
 			_open_radial()
 			get_viewport().set_input_as_handled()
+		else:
+			print("[Biome1] Tentativa de abrir o Menu Radial fora de um SweetSpot.")
 		return
 
 	if event.is_action_released(&"radial_open"):
@@ -48,11 +55,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.is_action_pressed(&"radial_btn_y"):
 			_choose_slot(2)
 		return
-
-	# 2. INTERAÇÃO PARA ABRIR O ESTUDO (Tecla E)
-	if event is InputEventKey and event.pressed and event.keycode == KEY_E and radio_atual != null:
-		if not minigame.visible:
-			_abrir_estudo_da_ave(radio_atual)
 
 func _open_radial() -> void:
 	radial_menu.visible = true

@@ -11,7 +11,7 @@ const PITCH_INDEXES = {
 	KEY_2: 1, # Neutro
 	KEY_3: 2  # Agudo
 }
-
+var _pending_syllables: Array[SyllableData] = []
 var _current_signal: SignalData
 var _current_syllable_index: int = 0
 var _current_note_index: int = 0
@@ -23,12 +23,20 @@ func _ready() -> void:
 ## Inicializa o estado lógico da validação para a ave atual
 func open(signal_data: SignalData) -> void:
 	if not signal_data:
+		print("[Repertoire] Erro: Tentativa de abrir minigame sem SignalData válido.")
 		return
+		
+	print("[Repertoire] Minigame aberto. Ave carregada. Total de Sílabas: ", signal_data.syllables.size())
 	_current_signal = signal_data
 	_current_syllable_index = 0
 	_current_note_index = 0
 	_is_active = true
-	
+	_pending_syllables = []
+	for s in _current_signal.syllables:
+		if s.is_unlocked:
+			_pending_syllables.append(s)
+			
+	_current_note_index = 0
 	set_process_unhandled_key_input(true)
 
 ## Reseta o estado lógico do jogo e desativa processamento
@@ -62,6 +70,7 @@ func receive_radial_input(freq_index: int) -> void:
 ## Processa a validação matemática/lógica da nota inserida
 func _on_frequency_pressed(freq_index: int) -> void:
 	if not _is_active or not _current_signal:
+		print("[Repertoire] Input ignorado: Minigame inativo ou sem ave atual.")
 		return
 	
 	if _current_syllable_index >= _current_signal.syllables.size():
@@ -69,38 +78,40 @@ func _on_frequency_pressed(freq_index: int) -> void:
 		
 	var current_syllable: SyllableData = _current_signal.syllables[_current_syllable_index]
 	
-	# Validação de progressão: Se o especialista não coletou áudios suficientes para liberar a sílaba
 	if "is_unlocked" in current_syllable and not current_syllable.is_unlocked:
 		print("[Repertoire] Tentativa de input em Sílaba Bloqueada.")
 		return
 	
 	var expected_pitch = current_syllable.frequency_sequence[_current_note_index]
+	print("[Repertoire] Input Recebido: ", freq_index, " | Esperado: ", expected_pitch)
 	
 	if freq_index == expected_pitch:
+		print("[Repertoire] Nota CORRETA!")
 		_current_note_index += 1
 		
 		if _current_note_index >= current_syllable.frequency_sequence.size():
 			_advance_syllable()
 	else:
-		# Errou a nota da sequência: Reseta a sílaba atual para o começo
+		print("[Repertoire] Nota ERRADA! Resetando progresso desta sílaba.")
 		_current_note_index = 0
 
 ## Controla os índices de avanço do minigame e travas de áudio corrompido
 func _advance_syllable() -> void:
+	print("[Repertoire] Sílaba finalizada com sucesso! Avançando...")
 	_current_note_index = 0
 	_current_syllable_index += 1
 	
 	if _current_syllable_index < _current_signal.syllables.size():
 		var next_syllable = _current_signal.syllables[_current_syllable_index]
 		
-		# Se a próxima sílaba exigir um encontro maior do que o jogador possui
 		if "is_unlocked" in next_syllable and not next_syllable.is_unlocked:
+			print("[Repertoire] Próxima sílaba bloqueada. Encerrando minigame prematuramente.")
 			_is_active = false
 			minigame_cancelled.emit()
 			close()
 			return
 	else:
-		# Completou todas as sílabas com sucesso
+		print("[Repertoire] Todas as sílabas validadas! Minigame Concluído.")
 		set_process_unhandled_key_input(false)
 		
 		if has_node("/root/SignalBook"):

@@ -9,19 +9,16 @@
 [sub_resource type="Resource" id="Resource_3rwdg"]
 script = ExtResource("2_kr8nq")
 frequency_sequence = Array[int]([1, 0, 2])
-required_encounter = 1
 metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
 
 [sub_resource type="Resource" id="Resource_ppr1k"]
 script = ExtResource("2_kr8nq")
 frequency_sequence = Array[int]([0, 1, 2])
-required_encounter = 2
 metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
 
 [sub_resource type="Resource" id="Resource_kajio"]
 script = ExtResource("2_kr8nq")
 frequency_sequence = Array[int]([2, 1, 1])
-required_encounter = 3
 metadata/_custom_type_script = "uid://c3nnlsb7s4usg"
 
 [resource]
