@@ -3,7 +3,9 @@ extends Node
 # Armazena quantas vezes o jogador encontrou cada ave neste nível
 # Exemplo: {"bem-te-vi": 1, "quero-quero": 3}
 var bird_encounter_counts: Dictionary = {}
+var solved_puzzles: Array[String] = [] # <--- Adicione esta lista
 
+signal victory_achieved # <--- Sinal para avisar a UI ou mudar de cena
 func set_player_input_blocked(blocked: bool) -> void:
 	var tree = get_tree()
 	if not tree or not tree.current_scene:
@@ -38,3 +40,14 @@ func register_encounter(signal_id: String) -> int:
 
 func get_encounter_count(signal_id: String) -> int:
 	return bird_encounter_counts.get(signal_id, 0)
+
+
+
+func register_puzzle_completion(bird_id: String) -> void:
+	if not solved_puzzles.has(bird_id):
+		solved_puzzles.append(bird_id)
+		print("[GameManager] Puzzle concluído: ", bird_id)
+		
+		# Verifica se atingiu a meta de 2 puzzles
+		if solved_puzzles.size() >= 2:
+			victory_achieved.emit()

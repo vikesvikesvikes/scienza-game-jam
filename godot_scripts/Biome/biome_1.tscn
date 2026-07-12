@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://04i7fe06yqy8" path="res://godot_scripts/Biome/biome_1.gd" id="1_m57mw"]
 [ext_resource type="TileSet" uid="uid://ccm03blrtisjv" path="res://tileset.tres" id="1_vn4qf"]
 [ext_resource type="PackedScene" uid="uid://crvw34ntx1gvk" path="res://godot_scripts/scenes/Player/Player.tscn" id="3_5jxgl"]
+[ext_resource type="PackedScene" uid="uid://b7ubsiikt73vq" path="res://godot_scripts/scenes/VictoryScree.tscn" id="4_5nxr5"]
 [ext_resource type="PackedScene" uid="uid://deoa3gb1xlx54" path="res://godot_scripts/scenes/radial_menu/RadialMenu.tscn" id="4_hhgs3"]
 [ext_resource type="Script" uid="uid://7c1e48ad3aev" path="res://godot_scripts/scenes/repertoire_minigame/repertoire_minigame.gd" id="6_5f3aj"]
 [ext_resource type="PackedScene" uid="uid://c5oj5dmak2fl" path="res://godot_scripts/scenes/radio_emitter/RadioEmitter.tscn" id="6_c4feu"]
@@ -55,6 +56,8 @@ position = Vector2(661, 3052)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=833794037]
 
+[node name="VictoryScree" parent="HUD" unique_id=1232465282 instance=ExtResource("4_5nxr5")]
+
 [node name="RadialMenu" parent="HUD" unique_id=378127734 instance=ExtResource("4_hhgs3")]
 anchors_preset = 15
 anchor_left = 0.0
@@ -83,9 +86,10 @@ feedback_ui = NodePath("../FeedbackMessage")
 position = Vector2(1459, 556)
 signal_data = ExtResource("9_4a081")
 
-[node name="SweetSpot" parent="." unique_id=320517776 instance=ExtResource("8_rbq33")]
+[node name="SweetSpot" parent="." unique_id=320517776 node_paths=PackedStringArray("repertoire_minigame") instance=ExtResource("8_rbq33")]
 position = Vector2(1459, 556)
 linked_emitter = NodePath("../RadioEmitter")
+repertoire_minigame = NodePath("../HUD/RepertoireMinigame")
 
 [node name="BirdHint" parent="SweetSpot" unique_id=111305096 instance=ExtResource("9_d73et")]
 
@@ -93,9 +97,11 @@ linked_emitter = NodePath("../RadioEmitter")
 position = Vector2(2081, 1330)
 signal_data = ExtResource("9_4a081")
 
-[node name="SweetSpot2" parent="." unique_id=1359344872 instance=ExtResource("8_rbq33")]
+[node name="SweetSpot2" parent="." unique_id=1359344872 node_paths=PackedStringArray("repertoire_minigame") instance=ExtResource("8_rbq33")]
 position = Vector2(2081, 1330)
 linked_emitter = NodePath("../RadioEmitter2")
+repertoire_minigame = NodePath("../HUD/RepertoireMinigame")
+target_syllable_index = 1
 
 [node name="BirdHint" parent="SweetSpot2" unique_id=2003308200 instance=ExtResource("9_d73et")]
 position = Vector2(1, 0)
@@ -105,9 +111,11 @@ target_syllable_index = 1
 position = Vector2(527, 2378)
 signal_data = ExtResource("9_4a081")
 
-[node name="SweetSpot3" parent="." unique_id=1900364800 instance=ExtResource("8_rbq33")]
+[node name="SweetSpot3" parent="." unique_id=1900364800 node_paths=PackedStringArray("repertoire_minigame") instance=ExtResource("8_rbq33")]
 position = Vector2(527, 2378)
 linked_emitter = NodePath("../RadioEmitter3")
+repertoire_minigame = NodePath("../HUD/RepertoireMinigame")
+target_syllable_index = 2
 
 [node name="BirdHint" parent="SweetSpot3" unique_id=1625807808 instance=ExtResource("9_d73et")]
 target_syllable_index = 2
@@ -116,9 +124,11 @@ target_syllable_index = 2
 position = Vector2(751, 1609)
 signal_data = ExtResource("7_r4v0i")
 
-[node name="SweetSpot4" parent="." unique_id=728885504 instance=ExtResource("8_rbq33")]
+[node name="SweetSpot4" parent="." unique_id=728885504 node_paths=PackedStringArray("repertoire_minigame") instance=ExtResource("8_rbq33")]
 position = Vector2(751, 1609)
 linked_emitter = NodePath("../RadioEmitter4")
+repertoire_minigame = NodePath("../HUD/RepertoireMinigame")
+target_syllable_index = 2
 
 [node name="BirdHint2" parent="SweetSpot4" unique_id=1551270692 instance=ExtResource("14_f5eoy")]
 target_syllable_index = 2
@@ -127,9 +137,11 @@ target_syllable_index = 2
 position = Vector2(1002, 2860)
 signal_data = ExtResource("7_r4v0i")
 
-[node name="SweetSpot5" parent="." unique_id=2096498968 instance=ExtResource("8_rbq33")]
+[node name="SweetSpot5" parent="." unique_id=2096498968 node_paths=PackedStringArray("repertoire_minigame") instance=ExtResource("8_rbq33")]
 position = Vector2(1002, 2860)
 linked_emitter = NodePath("../RadioEmitter5")
+repertoire_minigame = NodePath("../HUD/RepertoireMinigame")
+target_syllable_index = 1
 
 [node name="BirdHint2" parent="SweetSpot5" unique_id=1941162063 instance=ExtResource("14_f5eoy")]
 target_syllable_index = 1
@@ -138,8 +150,9 @@ target_syllable_index = 1
 position = Vector2(467, 583)
 signal_data = ExtResource("7_r4v0i")
 
-[node name="SweetSpot6" parent="." unique_id=1074808956 instance=ExtResource("8_rbq33")]
+[node name="SweetSpot6" parent="." unique_id=1074808956 node_paths=PackedStringArray("repertoire_minigame") instance=ExtResource("8_rbq33")]
 position = Vector2(467, 583)
 linked_emitter = NodePath("../RadioEmitter6")
+repertoire_minigame = NodePath("../HUD/RepertoireMinigame")
 
 [node name="BirdHint2" parent="SweetSpot6" unique_id=765484267 instance=ExtResource("14_f5eoy")]

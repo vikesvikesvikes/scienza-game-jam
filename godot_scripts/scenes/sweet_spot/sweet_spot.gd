@@ -13,11 +13,12 @@ signal player_exited_sweetspot
 
 ## O RadioEmitter ao qual este sweet spot pertence
 @export var linked_emitter: NodePath
-
+@export var repertoire_minigame: RepertoireMinigame
 ## Se true, mostra um indicador visual no mapa (DebugShape)
 @export var show_debug_area: bool = true
 
 var _emitter: RadioEmitter = null
+@export var target_syllable_index : int
 
 func _ready() -> void:
 	# Adiciona ao grupo para ser encontrado pelo BirdHint
@@ -41,6 +42,7 @@ func _on_body_entered(body: Node2D) -> void:
 		print("[SweetSpot]   → emitter encontrado: %s" % _emitter.name)
 		_emitter.on_player_entered_sweet_spot()
 		player_entered_sweetspot.emit(_emitter)
+		repertoire_minigame.set_active_target(target_syllable_index)
 		print("[SweetSpot]   → sinal player_entered_sweetspot emitido")
 	else:
 		print("[SweetSpot]   ⚠️  linked_emitter não configurado — verifique o Inspector")
@@ -52,5 +54,6 @@ func _on_body_exited(body: Node2D) -> void:
 	if _emitter:
 		_emitter.on_player_exited_sweet_spot()
 	player_exited_sweetspot.emit()
+	repertoire_minigame.set_active_target(-1)
 	print("[SweetSpot]   → sinal player_exited_sweetspot emitido")
 	

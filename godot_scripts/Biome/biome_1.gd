@@ -24,6 +24,7 @@ func _ready() -> void:
 	minigame.minigame_cancelled.connect(_on_minigame_cancelled)
 	$HUD/RadialMenu.slot_selected.connect(_on_radial_menu_slot_selected)
 
+
 func _on_radial_menu_slot_selected(slot: Control, index: int) -> void:
 	# index 0 = Grave, 1 = Neutro, 2 = Agudo (Garanta que a ordem dos filhos no RadialMenu bata com isso)
 	$HUD/RepertoireMinigame.receive_radial_input(index)
@@ -49,11 +50,11 @@ func _input(event: InputEvent) -> void:
 
 	if radial_menu.enabled:
 		if event.is_action_pressed(&"radial_btn_a"):
-			_choose_slot(0)
+			_choose_slot(2)
 		elif event.is_action_pressed(&"radial_btn_x"):
 			_choose_slot(1)
 		elif event.is_action_pressed(&"radial_btn_y"):
-			_choose_slot(2)
+			_choose_slot(0)
 		return
 
 func _open_radial() -> void:

@@ -81,8 +81,7 @@ func check_win():
 	for piece in pieces:
 		if piece.index != piece.cell_index:
 			return
-	print("Yeeeah!! Quebra-cabeça concluído!")
-	
+	GameManager.register_puzzle_completion(_current_bird_image.resource_name)
 
 func get_available_pieces_count(signal_id: String) -> int:
 	var encontros = GameManager.get_encounter_count(signal_id)
