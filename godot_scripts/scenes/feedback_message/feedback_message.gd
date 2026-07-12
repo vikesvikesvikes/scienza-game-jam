@@ -36,9 +36,12 @@ func _ready() -> void:
 func show_wrong_sequence() -> void:
 	_show("Sequência errada", _style_error)
 
+func show_wrong_sequence2() -> void:
+	_show("Sequência já coletada", _style_error)
 ## Chame esta função quando o jogador acertar a sequência
 func show_correct_sequence() -> void:
 	_show("Sequência certa, novos dados coletados", _style_success)
+	
 
 func hide_message() -> void:
 	visible = false

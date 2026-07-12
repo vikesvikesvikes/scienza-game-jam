@@ -112,7 +112,7 @@ func _validate_sequence(target_index: int) -> void:
 	if _completed_syllables.has(target_index):
 		print("[Repertoire] Essa sílaba já foi concluída.")
 		if feedback_ui:
-			feedback_ui.show_wrong_sequence()
+			feedback_ui.show_wrong_sequence2()
 		return
 
 	print("[Repertoire] Sílaba", target_index, "concluída!")

@@ -67,12 +67,9 @@ func _close_radial() -> void:
 
 func _choose_slot(index: int) -> void:
 	radial_menu.set_temporary_selection(index)
-	# Modificado: Se você implementou o método customizado no RepertoireMinigame
+
 	if minigame.has_method("receive_radial_input"):
 		minigame.receive_radial_input(index)
-	else:
-		# Fallback para o comportamento padrão por index (Grave, Neutro, Agudo)
-		minigame._on_frequency_pressed(index)
 
 func _on_entered_sweetspot(emitter: RadioEmitter) -> void:
 	radio_atual = emitter
