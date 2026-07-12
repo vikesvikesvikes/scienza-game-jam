@@ -54,7 +54,6 @@ y_sort_enabled = true
 position = Vector2(661, 3052)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=833794037]
-visible = false
 
 [node name="RadialMenu" parent="HUD" unique_id=378127734 instance=ExtResource("4_hhgs3")]
 anchors_preset = 15
