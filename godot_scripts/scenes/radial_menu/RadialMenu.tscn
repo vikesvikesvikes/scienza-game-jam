@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://deoa3gb1xlx54"]
+[gd_scene format=3 uid="uid://deoa3gb1xlx54"]
 
 [ext_resource type="Script" uid="uid://c4x0np2q7ul41" path="res://addons/advanced_radial_menu/radial_menu_class.gd" id="1_ta58x"]
 
@@ -7,21 +7,18 @@ bg_color = Color(1, 0, 0, 1)
 corner_radius_top_left = 100
 corner_radius_top_right = 100
 corner_radius_bottom_right = 100
-corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x"]
 bg_color = Color(0, 1, 0, 1)
 corner_radius_top_left = 100
 corner_radius_top_right = 100
 corner_radius_bottom_right = 100
-corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y"]
 bg_color = Color(0, 0, 1, 1)
 corner_radius_top_left = 100
 corner_radius_top_right = 100
 corner_radius_bottom_right = 100
-corner_radius_bottom_left = 100
 
 [node name="RadialMenu" type="Control" unique_id=378127734]
 layout_mode = 3
@@ -44,7 +41,6 @@ offset_top = -22.0
 offset_right = 39.0
 offset_bottom = 234.0
 pivot_offset = Vector2(128, 128)
-metadata/pitch_index = 1
 
 [node name="Circle" type="Panel" parent="Slot_A" unique_id=1777536962]
 layout_mode = 1
@@ -63,10 +59,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_a")
 
 [node name="Label" type="Label" parent="Slot_A" unique_id=68558523]
 layout_mode = 0
-offset_left = 36.0
-offset_top = 33.0
-offset_right = 76.0
-offset_bottom = 56.0
+offset_left = 37.0
+offset_top = 32.0
+offset_right = 77.0
+offset_bottom = 55.0
 text = "A"
 
 [node name="Slot_X" type="Control" parent="." unique_id=1691099487]
@@ -76,7 +72,6 @@ offset_top = 6.0
 offset_right = 250.0
 offset_bottom = 262.0
 pivot_offset = Vector2(128, 128)
-metadata/pitch_index = 2
 
 [node name="Circle" type="Panel" parent="Slot_X" unique_id=1239390256]
 layout_mode = 1
@@ -95,8 +90,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_x")
 
 [node name="Label" type="Label" parent="Slot_X" unique_id=496088753]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 38.0
+offset_top = 33.0
+offset_right = 78.0
+offset_bottom = 56.0
 text = "X"
 
 [node name="Slot_Y" type="Control" parent="." unique_id=1034290175]
@@ -106,7 +103,6 @@ offset_top = -21.0
 offset_right = 236.0
 offset_bottom = 235.0
 pivot_offset = Vector2(128, 128)
-metadata/pitch_index = 0
 
 [node name="Circle" type="Panel" parent="Slot_Y" unique_id=773124006]
 layout_mode = 1
@@ -125,6 +121,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_y")
 
 [node name="Label" type="Label" parent="Slot_Y" unique_id=1040538321]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 37.0
+offset_top = 33.0
+offset_right = 77.0
+offset_bottom = 56.0
 text = "Y"
