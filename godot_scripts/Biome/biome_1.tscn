@@ -89,6 +89,7 @@ linked_emitter = NodePath("../RadioEmitter2")
 
 [node name="BirdHint" parent="SweetSpot2" unique_id=2003308200 instance=ExtResource("9_d73et")]
 position = Vector2(1, 0)
+target_syllable_index = 1
 
 [node name="RadioEmitter3" parent="." unique_id=538993915 instance=ExtResource("6_c4feu")]
 position = Vector2(686, 3045)
@@ -99,3 +100,4 @@ position = Vector2(686, 3045)
 linked_emitter = NodePath("../RadioEmitter3")
 
 [node name="BirdHint" parent="SweetSpot3" unique_id=1625807808 instance=ExtResource("9_d73et")]
+target_syllable_index = 2

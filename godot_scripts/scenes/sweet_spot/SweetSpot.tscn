@@ -7,6 +7,7 @@ radius = 86.09297
 
 [node name="SweetSpot" type="Area2D" unique_id=320517776]
 script = ExtResource("1_713on")
+show_debug_area = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1800941607]
 shape = SubResource("CircleShape2D_f012i")

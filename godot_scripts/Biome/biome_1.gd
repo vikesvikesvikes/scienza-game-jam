@@ -8,6 +8,7 @@ extends Node2D
 var radio_atual: RadioEmitter = null
 
 func _ready() -> void:
+	
 	# Inicialização do Menu Radial
 	radial_menu.visible = false
 	radial_menu.enabled = false
@@ -21,7 +22,12 @@ func _ready() -> void:
 	# Conecta as respostas de finalização do minijogo
 	minigame.minigame_completed.connect(_on_minigame_completed)
 	minigame.minigame_cancelled.connect(_on_minigame_cancelled)
+	$HUD/RadialMenu.slot_selected.connect(_on_radial_menu_slot_selected)
 
+func _on_radial_menu_slot_selected(slot: Control, index: int) -> void:
+	# index 0 = Grave, 1 = Neutro, 2 = Agudo (Garanta que a ordem dos filhos no RadialMenu bata com isso)
+	$HUD/RepertoireMinigame.receive_radial_input(index)
+	
 func _unhandled_input(event: InputEvent) -> void:
 	# 1. GERENCIAMENTO DO MENU RADIAL (Segurar TAB)
 	if event.is_action_pressed(&"radial_open"):
